@@ -1,0 +1,30 @@
+{
+  "name": "tiation-rigger-workspace-docs",
+  "version": "1.0.0",
+  "description": "Enterprise-grade component of the Tiation Rigger platform",
+  "private": true,
+  "scripts": {
+    "dev": "echo 'Development server not configured'",
+    "build": "echo 'Build process not configured'",
+    "test": "echo 'Tests not configured'",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "format": "prettier --write '**/*.{js,jsx,ts,tsx,json,md}'"
+  },
+  "keywords": [
+    "tiation",
+    "rigger",
+    "construction",
+    "enterprise",
+    "automation"
+  ],
+  "author": "Tiation Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tiation/tiation-rigger-workspace-docs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tiation/tiation-rigger-workspace-docs/issues"
+  },
+  "homepage": "https://github.com/tiation/tiation-rigger-workspace-docs#readme"
+}
