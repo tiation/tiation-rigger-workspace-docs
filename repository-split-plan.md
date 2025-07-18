@@ -3,6 +3,7 @@
 ## RiggerConnect-RiggerJobs-Workspace Repository Splitting Strategy
 
 ### Current Monorepo Structure
+
 ```
 RiggerConnect-RiggerJobs-Workspace-PB/
 ├── AutomationServer/           # Backend API server
@@ -21,8 +22,9 @@ RiggerConnect-RiggerJobs-Workspace-PB/
 ### Proposed Split Structure
 
 #### 1. **tiation-rigger-automation-server**
+
 - **Purpose**: Backend API and automation engine
-- **Components**: 
+- **Components**:
   - `AutomationServer/`
   - `Infrastructure/` (backend-related)
   - `Tests/` (backend tests)
@@ -31,6 +33,7 @@ RiggerConnect-RiggerJobs-Workspace-PB/
 - **Indexable**: ✅ Pure backend code, well-structured
 
 #### 2. **tiation-rigger-connect-app**
+
 - **Purpose**: Business-facing mobile application
 - **Components**:
   - `RiggerConnectApp/`
@@ -40,6 +43,7 @@ RiggerConnect-RiggerJobs-Workspace-PB/
 - **Indexable**: ✅ Mobile app code, component-based
 
 #### 3. **tiation-rigger-jobs-app**
+
 - **Purpose**: Worker-facing mobile application
 - **Components**:
   - `RiggerJobsApp/`
@@ -48,6 +52,7 @@ RiggerConnect-RiggerJobs-Workspace-PB/
 - **Indexable**: ✅ Mobile app code, component-based
 
 #### 4. **tiation-rigger-infrastructure**
+
 - **Purpose**: DevOps, deployment, and infrastructure as code
 - **Components**:
   - `Infrastructure/`
@@ -57,6 +62,7 @@ RiggerConnect-RiggerJobs-Workspace-PB/
 - **Indexable**: ✅ Infrastructure code, well-organized
 
 #### 5. **tiation-rigger-shared-libraries**
+
 - **Purpose**: Common utilities and shared code
 - **Components**:
   - `Shared/`
@@ -65,6 +71,7 @@ RiggerConnect-RiggerJobs-Workspace-PB/
 - **Indexable**: ✅ Utility libraries, well-structured
 
 #### 6. **tiation-rigger-metrics-dashboard**
+
 - **Purpose**: Analytics and metrics dashboard
 - **Components**:
   - `MetricsDashboard/`
@@ -73,6 +80,7 @@ RiggerConnect-RiggerJobs-Workspace-PB/
 - **Indexable**: ✅ Dashboard code, component-based
 
 #### 7. **tiation-rigger-workspace-docs**
+
 - **Purpose**: Comprehensive documentation and assets
 - **Components**:
   - `docs/`
@@ -119,4 +127,5 @@ RiggerConnect-RiggerJobs-Workspace-PB/
 - **Phase 3 (Day 6-7)**: Test integration and deployment
 - **Phase 4 (Day 8-10)**: Update documentation and finalize
 
-This split will enable better code organization, improved development workflows, and proper code indexing for AI-assisted development.
+This split will enable better code organization, improved development workflows,
+and proper code indexing for AI-assisted development.

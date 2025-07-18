@@ -1,384 +1,384 @@
 /* styles.css */
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
 }
 
 body {
-    background-color: #f8f9fa;
-    color: #333;
+  background-color: #f8f9fa;
+  color: #333;
 }
 
 .nav {
-    width: 100%;
-    background: #4CAF50;
-    padding: 10px 0;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  width: 100%;
+  background: #4caf50;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 80%;
-    max-width: 1200px;
-    margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .logo h1 {
-    color: white;
-    font-size: 24px;
-    font-weight: 600;
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
 }
 
 .tagline {
-    color: #dedede;
-    font-size: 14px;
+  color: #dedede;
+  font-size: 14px;
 }
 
 .nav-menu {
-    list-style: none;
-    display: flex;
+  list-style: none;
+  display: flex;
 }
 
 .nav-menu li {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 .nav-menu a {
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
-    padding: 5px 10px;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  padding: 5px 10px;
 }
 
 .nav-menu a:hover {
-    background: #388E3C;
-    border-radius: 5px;
+  background: #388e3c;
+  border-radius: 5px;
 }
 
 .hero {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    background: #ffffff;
-    padding: 50px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  background: #ffffff;
+  padding: 50px 0;
 }
 
 .hero-content {
-    max-width: 500px;
+  max-width: 500px;
 }
 
 .hero-content h1 {
-    font-size: 3rem;
-    color: #333;
-    line-height: 1.2;
-    margin-bottom: 20px;
+  font-size: 3rem;
+  color: #333;
+  line-height: 1.2;
+  margin-bottom: 20px;
 }
 
 .hero-content p {
-    font-size: 18px;
-    margin-bottom: 30px;
-    color: #555;
+  font-size: 18px;
+  margin-bottom: 30px;
+  color: #555;
 }
 
 .hero-buttons .btn {
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    color: white;
-    margin-right: 10px;
-    display: inline-block;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+  margin-right: 10px;
+  display: inline-block;
 }
 
 .btn-primary {
-    background: #4CAF50;
+  background: #4caf50;
 }
 
 .btn-secondary {
-    background: #333;
+  background: #333;
 }
 
 .hero-image {
-    max-width: 600px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .mockup-container {
-    display: flex;
+  display: flex;
 }
 
 .mockup {
-    width: 200px;
-    height: 400px;
-    border: 2px solid #ddd;
-    border-radius: 15px;
-    margin: 0 10px;
-    overflow: hidden;
-    background: white;
-    position: relative;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  width: 200px;
+  height: 400px;
+  border: 2px solid #ddd;
+  border-radius: 15px;
+  margin: 0 10px;
+  overflow: hidden;
+  background: white;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .mockup h3 {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    font-size: 18px;
-    color: #4CAF50;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 18px;
+  color: #4caf50;
 }
 
 .mockup p {
-    position: absolute;
-    top: 60px;
-    left: 20px;
-    font-size: 14px;
-    color: #888;
+  position: absolute;
+  top: 60px;
+  left: 20px;
+  font-size: 14px;
+  color: #888;
 }
 
 .features {
-    background: #f2f2f2;
-    padding: 50px 0;
-    text-align: center;
+  background: #f2f2f2;
+  padding: 50px 0;
+  text-align: center;
 }
 
 .features h2 {
-    margin-bottom: 50px;
-    color: #4CAF50;
+  margin-bottom: 50px;
+  color: #4caf50;
 }
 
 .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    width: 80%;
-    max-width: 1200px;
-    margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .feature-card {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .feature-icon {
-    font-size: 2rem;
-    margin-bottom: 15px;
-    color: #4CAF50;
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #4caf50;
 }
 
 .feature-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
 }
 
 .architecture {
-    padding: 50px 0;
-    text-align: center;
+  padding: 50px 0;
+  text-align: center;
 }
 
 .architecture h2 {
-    margin-bottom: 50px;
-    color: #333;
+  margin-bottom: 50px;
+  color: #333;
 }
 
 .architecture-diagram {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 50px;
 }
 
 .arch-layer {
-    max-width: 300px;
-    background: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    padding: 20px;
+  max-width: 300px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
 }
 
 .arch-layer h3 {
-    color: #4CAF50;
-    margin-bottom: 20px;
+  color: #4caf50;
+  margin-bottom: 20px;
 }
 
 .repos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    width: 80%;
-    max-width: 1200px;
-    margin: 0 auto;
-    margin-bottom: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 50px;
 }
 
 .repo-card {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .repo-card h3 {
-    color: #4CAF50;
-    margin-bottom: 10px;
+  color: #4caf50;
+  margin-bottom: 10px;
 }
 
 .repo-links {
-    margin-top: 10px;
-    font-size: 0.875rem;
+  margin-top: 10px;
+  font-size: 0.875rem;
 }
 
 .repo-link {
-    color: #2196F3;
-    text-decoration: none;
+  color: #2196f3;
+  text-decoration: none;
 }
 
 .repo-link:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .repositories {
-    padding: 50px 0;
-    background: #f2f2f2;
-    text-align: center;
+  padding: 50px 0;
+  background: #f2f2f2;
+  text-align: center;
 }
 
 .repositories h2 {
-    margin-bottom: 50px;
-    color: #333;
+  margin-bottom: 50px;
+  color: #333;
 }
 
 .documentation {
-    padding: 50px 0;
-    text-align: center;
+  padding: 50px 0;
+  text-align: center;
 }
 
 .documentation h2 {
-    margin-bottom: 50px;
-    color: #4CAF50;
+  margin-bottom: 50px;
+  color: #4caf50;
 }
 
 .docs-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    width: 80%;
-    max-width: 1200px;
-    margin: 0 auto;
-    margin-bottom: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 50px;
 }
 
 .doc-card {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .doc-card h3 {
-    color: #333;
-    margin-bottom: 10px;
+  color: #333;
+  margin-bottom: 10px;
 }
 
 .doc-link {
-    color: #2196F3;
-    text-decoration: none;
+  color: #2196f3;
+  text-decoration: none;
 }
 
 .doc-link:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .contact {
-    padding: 50px 0;
-    background: #ffffff;
-    text-align: center;
+  padding: 50px 0;
+  background: #ffffff;
+  text-align: center;
 }
 
 .contact h2 {
-    margin-bottom: 50px;
-    color: #333;
+  margin-bottom: 50px;
+  color: #333;
 }
 
 .contact-content {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    width: 80%;
-    max-width: 1200px;
-    margin: 0 auto;
-    margin-bottom: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 50px;
 }
 
 .contact-info,
 .contact-links {
-    max-width: 300px;
-    margin-bottom: 20px;
+  max-width: 300px;
+  margin-bottom: 20px;
 }
 
 .contact-info h3,
 .contact-links h3 {
-    color: #4CAF50;
-    margin-bottom: 20px;
+  color: #4caf50;
+  margin-bottom: 20px;
 }
 
 .contact-links ul {
-    list-style: none;
+  list-style: none;
 }
 
 .contact-links li {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .footer {
-    background: #4CAF50;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
+  background: #4caf50;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
 }
 
 .footer-content {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    width: 80%;
-    max-width: 1200px;
-    margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .footer-section {
-    max-width: 300px;
-    margin-bottom: 20px;
+  max-width: 300px;
+  margin-bottom: 20px;
 }
 
 .footer-section h4 {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .footer-section ul {
-    list-style: none;
+  list-style: none;
 }
 
 .footer-section li {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .footer-bottom {
-    margin-top: 20px;
-    font-size: 0.875rem;
+  margin-top: 20px;
+  font-size: 0.875rem;
 }

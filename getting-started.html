@@ -1,116 +1,119 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Getting Started - RiggerConnect</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <header class="header">
-        <nav class="nav">
-            <div class="nav-container">
-                <div class="logo">
-                    <a href="index.html" style="text-decoration: none; color: white;">
-                        <h1>RiggerConnect</h1>
-                        <span class="tagline">Professional Rigging Management</span>
-                    </a>
-                </div>
-                <ul class="nav-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="getting-started.html">Getting Started</a></li>
-                    <li><a href="api-reference.html">API Reference</a></li>
-                    <li><a href="architecture.html">Architecture</a></li>
-                    <li><a href="dependencies.html">Dependencies</a></li>
-                </ul>
-            </div>
-        </nav>
+      <nav class="nav">
+        <div class="nav-container">
+          <div class="logo">
+            <a href="index.html" style="text-decoration: none; color: white">
+              <h1>RiggerConnect</h1>
+              <span class="tagline">Professional Rigging Management</span>
+            </a>
+          </div>
+          <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="getting-started.html">Getting Started</a></li>
+            <li><a href="api-reference.html">API Reference</a></li>
+            <li><a href="architecture.html">Architecture</a></li>
+            <li><a href="dependencies.html">Dependencies</a></li>
+          </ul>
+        </div>
+      </nav>
     </header>
 
     <main>
-        <div class="container" style="padding: 50px 0; max-width: 1200px; margin: 0 auto;">
-            <h1 style="color: #4CAF50; margin-bottom: 30px;">Getting Started</h1>
-            
-            <section>
-                <h2>Prerequisites</h2>
-                <ul>
-                    <li>Node.js (v18 or higher)</li>
-                    <li>npm or yarn</li>
-                    <li>Git</li>
-                    <li>Docker (for containerized deployment)</li>
-                    <li>MongoDB (for database)</li>
-                    <li>Redis (for caching)</li>
-                </ul>
-            </section>
+      <div class="container" style="padding: 50px 0; max-width: 1200px; margin: 0 auto">
+        <h1 style="color: #4caf50; margin-bottom: 30px">Getting Started</h1>
 
-            <section>
-                <h2>Quick Start</h2>
-                <h3>1. Clone the Repositories</h3>
-                <pre><code>git clone https://github.com/tiation/tiation-rigger-automation-server.git
+        <section>
+          <h2>Prerequisites</h2>
+          <ul>
+            <li>Node.js (v18 or higher)</li>
+            <li>npm or yarn</li>
+            <li>Git</li>
+            <li>Docker (for containerized deployment)</li>
+            <li>MongoDB (for database)</li>
+            <li>Redis (for caching)</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Quick Start</h2>
+          <h3>1. Clone the Repositories</h3>
+          <pre><code>git clone https://github.com/tiation/tiation-rigger-automation-server.git
 git clone https://github.com/tiation/tiation-rigger-mobile-app.git
 git clone https://github.com/tiation/tiation-rigger-connect-app.git
 git clone https://github.com/tiation/tiation-rigger-jobs-app.git
 git clone https://github.com/tiation/tiation-rigger-shared-libraries.git</code></pre>
 
-                <h3>2. Setup Shared Libraries</h3>
-                <pre><code>cd tiation-rigger-shared-libraries
+          <h3>2. Setup Shared Libraries</h3>
+          <pre><code>cd tiation-rigger-shared-libraries
 npm install
 npm run build
 npm link</code></pre>
 
-                <h3>3. Setup Backend (Automation Server)</h3>
-                <pre><code>cd tiation-rigger-automation-server
+          <h3>3. Setup Backend (Automation Server)</h3>
+          <pre><code>cd tiation-rigger-automation-server
 npm install
 npm link @tiation/rigger-shared
 cp .env.example .env
 # Edit .env with your configuration
 npm run dev</code></pre>
 
-                <h3>4. Setup Frontend Applications</h3>
-                <h4>RiggerConnect App</h4>
-                <pre><code>cd tiation-rigger-connect-app
+          <h3>4. Setup Frontend Applications</h3>
+          <h4>RiggerConnect App</h4>
+          <pre><code>cd tiation-rigger-connect-app
 npm install
 npm link @tiation/rigger-shared
 npm run dev</code></pre>
 
-                <h4>RiggerJobs App</h4>
-                <pre><code>cd tiation-rigger-jobs-app
+          <h4>RiggerJobs App</h4>
+          <pre><code>cd tiation-rigger-jobs-app
 npm install
 npm link @tiation/rigger-shared
 npm run dev</code></pre>
 
-                <h4>Mobile App</h4>
-                <pre><code>cd tiation-rigger-mobile-app
+          <h4>Mobile App</h4>
+          <pre><code>cd tiation-rigger-mobile-app
 npm install
 npm link @tiation/rigger-shared
 npx react-native run-ios  # or run-android</code></pre>
-            </section>
+        </section>
 
-            <section>
-                <h2>Environment Configuration</h2>
-                <h3>Backend (.env)</h3>
-                <pre><code>PORT=3000
+        <section>
+          <h2>Environment Configuration</h2>
+          <h3>Backend (.env)</h3>
+          <pre><code>PORT=3000
 NODE_ENV=development
 MONGODB_URI=mongodb://localhost:27017/riggerconnect
 REDIS_URL=redis://localhost:6379
 JWT_SECRET=your-jwt-secret
 API_BASE_URL=http://localhost:3000</code></pre>
 
-                <h3>Frontend (.env.local)</h3>
-                <pre><code>REACT_APP_API_URL=http://localhost:3000
+          <h3>Frontend (.env.local)</h3>
+          <pre><code>REACT_APP_API_URL=http://localhost:3000
 REACT_APP_ENVIRONMENT=development</code></pre>
-            </section>
+        </section>
 
-            <section>
-                <h2>Docker Setup</h2>
-                <h3>Using Docker Compose</h3>
-                <pre><code>docker-compose up -d</code></pre>
+        <section>
+          <h2>Docker Setup</h2>
+          <h3>Using Docker Compose</h3>
+          <pre><code>docker-compose up -d</code></pre>
 
-                <h3>Individual Services</h3>
-                <pre><code># MongoDB
+          <h3>Individual Services</h3>
+          <pre><code># MongoDB
 docker run -d -p 27017:27017 --name mongodb mongo:latest
 
 # Redis
@@ -119,87 +122,91 @@ docker run -d -p 6379:6379 --name redis redis:latest
 # Application
 docker build -t rigger-automation-server .
 docker run -p 3000:3000 rigger-automation-server</code></pre>
-            </section>
+        </section>
 
-            <section>
-                <h2>Development Workflow</h2>
-                <ol>
-                    <li>Always update shared libraries first</li>
-                    <li>Run tests before committing</li>
-                    <li>Use conventional commits</li>
-                    <li>Create feature branches</li>
-                    <li>Submit pull requests for code review</li>
-                </ol>
-            </section>
+        <section>
+          <h2>Development Workflow</h2>
+          <ol>
+            <li>Always update shared libraries first</li>
+            <li>Run tests before committing</li>
+            <li>Use conventional commits</li>
+            <li>Create feature branches</li>
+            <li>Submit pull requests for code review</li>
+          </ol>
+        </section>
 
-            <section>
-                <h2>Testing</h2>
-                <h3>Unit Tests</h3>
-                <pre><code>npm test</code></pre>
+        <section>
+          <h2>Testing</h2>
+          <h3>Unit Tests</h3>
+          <pre><code>npm test</code></pre>
 
-                <h3>Integration Tests</h3>
-                <pre><code>npm run test:integration</code></pre>
+          <h3>Integration Tests</h3>
+          <pre><code>npm run test:integration</code></pre>
 
-                <h3>E2E Tests</h3>
-                <pre><code>npm run test:e2e</code></pre>
-            </section>
+          <h3>E2E Tests</h3>
+          <pre><code>npm run test:e2e</code></pre>
+        </section>
 
-            <section>
-                <h2>Deployment</h2>
-                <h3>Staging</h3>
-                <pre><code>npm run build
+        <section>
+          <h2>Deployment</h2>
+          <h3>Staging</h3>
+          <pre><code>npm run build
 npm run deploy:staging</code></pre>
 
-                <h3>Production</h3>
-                <pre><code>npm run build:prod
+          <h3>Production</h3>
+          <pre><code>npm run build:prod
 npm run deploy:prod</code></pre>
-            </section>
+        </section>
 
-            <section>
-                <h2>Troubleshooting</h2>
-                <h3>Common Issues</h3>
-                <ul>
-                    <li><strong>Port already in use:</strong> Change the port in .env file</li>
-                    <li><strong>MongoDB connection failed:</strong> Ensure MongoDB is running</li>
-                    <li><strong>Module not found:</strong> Run npm install and check dependencies</li>
-                    <li><strong>Permission denied:</strong> Check file permissions and ownership</li>
-                </ul>
-            </section>
+        <section>
+          <h2>Troubleshooting</h2>
+          <h3>Common Issues</h3>
+          <ul>
+            <li><strong>Port already in use:</strong> Change the port in .env file</li>
+            <li><strong>MongoDB connection failed:</strong> Ensure MongoDB is running</li>
+            <li><strong>Module not found:</strong> Run npm install and check dependencies</li>
+            <li><strong>Permission denied:</strong> Check file permissions and ownership</li>
+          </ul>
+        </section>
 
-            <section>
-                <h2>Next Steps</h2>
-                <ul>
-                    <li><a href="api-reference.html">Explore the API Reference</a></li>
-                    <li><a href="architecture.html">Learn about the Architecture</a></li>
-                    <li><a href="dependencies.html">Understand Dependencies</a></li>
-                    <li><a href="https://github.com/tiation/tiation-rigger-workspace-docs/wiki">Check the Wiki</a></li>
-                </ul>
-            </section>
-        </div>
+        <section>
+          <h2>Next Steps</h2>
+          <ul>
+            <li><a href="api-reference.html">Explore the API Reference</a></li>
+            <li><a href="architecture.html">Learn about the Architecture</a></li>
+            <li><a href="dependencies.html">Understand Dependencies</a></li>
+            <li>
+              <a href="https://github.com/tiation/tiation-rigger-workspace-docs/wiki"
+                >Check the Wiki</a
+              >
+            </li>
+          </ul>
+        </section>
+      </div>
     </main>
 
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>RiggerConnect</h4>
-                    <p>Professional rigging management platform.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Documentation</h4>
-                    <ul>
-                        <li><a href="getting-started.html">Getting Started</a></li>
-                        <li><a href="api-reference.html">API Reference</a></li>
-                        <li><a href="architecture.html">Architecture</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Tiation. All rights reserved.</p>
-            </div>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h4>RiggerConnect</h4>
+            <p>Professional rigging management platform.</p>
+          </div>
+          <div class="footer-section">
+            <h4>Documentation</h4>
+            <ul>
+              <li><a href="getting-started.html">Getting Started</a></li>
+              <li><a href="api-reference.html">API Reference</a></li>
+              <li><a href="architecture.html">Architecture</a></li>
+            </ul>
+          </div>
         </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 Tiation. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

@@ -25,7 +25,9 @@
 
 ## 🎯 Overview
 
-This document outlines the comprehensive deployment strategies for the RiggerConnect-RiggerJobs-Workspace platform, ensuring enterprise-grade reliability, scalability, and maintainability across all components.
+This document outlines the comprehensive deployment strategies for the
+RiggerConnect-RiggerJobs-Workspace platform, ensuring enterprise-grade
+reliability, scalability, and maintainability across all components.
 
 ### Key Deployment Principles
 
@@ -42,13 +44,13 @@ This document outlines the comprehensive deployment strategies for the RiggerCon
 
 ### System Components
 
-| Component | Type | Technology | Deployment Strategy |
-|-----------|------|------------|-------------------|
-| **AutomationServer** | Backend API | Node.js, Express | Blue-Green Deployment |
-| **RiggerConnect App** | Mobile (Business) | React Native | App Store/Play Store |
-| **RiggerJobs App** | Mobile (Worker) | React Native | App Store/Play Store |
-| **Database** | Data Layer | MongoDB, Redis | Master-Slave Replication |
-| **Infrastructure** | DevOps | Kubernetes, AWS | Infrastructure as Code |
+| Component             | Type              | Technology       | Deployment Strategy      |
+| --------------------- | ----------------- | ---------------- | ------------------------ |
+| **AutomationServer**  | Backend API       | Node.js, Express | Blue-Green Deployment    |
+| **RiggerConnect App** | Mobile (Business) | React Native     | App Store/Play Store     |
+| **RiggerJobs App**    | Mobile (Worker)   | React Native     | App Store/Play Store     |
+| **Database**          | Data Layer        | MongoDB, Redis   | Master-Slave Replication |
+| **Infrastructure**    | DevOps            | Kubernetes, AWS  | Infrastructure as Code   |
 
 ---
 
@@ -65,10 +67,10 @@ kind: ConfigMap
 metadata:
   name: deployment-config
 data:
-  strategy: "blue-green"
-  health_check_endpoint: "/health"
-  rollback_threshold: "5%"
-  deployment_timeout: "300s"
+  strategy: 'blue-green'
+  health_check_endpoint: '/health'
+  rollback_threshold: '5%'
+  deployment_timeout: '300s'
 ```
 
 **Deployment Pipeline:**
@@ -191,32 +193,32 @@ spec:
         app: mongodb
     spec:
       containers:
-      - name: mongodb
-        image: mongo:5.0
-        ports:
-        - containerPort: 27017
-        env:
-        - name: MONGO_INITDB_ROOT_USERNAME
-          valueFrom:
-            secretKeyRef:
-              name: mongodb-secret
-              key: username
-        - name: MONGO_INITDB_ROOT_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: mongodb-secret
-              key: password
-        volumeMounts:
-        - name: mongodb-persistent-storage
-          mountPath: /data/db
+        - name: mongodb
+          image: mongo:5.0
+          ports:
+            - containerPort: 27017
+          env:
+            - name: MONGO_INITDB_ROOT_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-secret
+                  key: username
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-secret
+                  key: password
+          volumeMounts:
+            - name: mongodb-persistent-storage
+              mountPath: /data/db
   volumeClaimTemplates:
-  - metadata:
-      name: mongodb-persistent-storage
-    spec:
-      accessModes: ["ReadWriteOnce"]
-      resources:
-        requests:
-          storage: 100Gi
+    - metadata:
+        name: mongodb-persistent-storage
+      spec:
+        accessModes: ['ReadWriteOnce']
+        resources:
+          requests:
+            storage: 100Gi
 ```
 
 ---
@@ -249,25 +251,25 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
-      
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Run linting
         run: npm run lint
-      
+
       - name: Type checking
         run: npm run type-check
-      
+
       - name: Security audit
         run: npm run security-audit
-      
+
       - name: Dependency vulnerability scan
         uses: snyk/actions/node@master
         env:
@@ -278,7 +280,7 @@ jobs:
     name: Test Suite
     runs-on: ubuntu-latest
     needs: quality-gate
-    
+
     services:
       mongodb:
         image: mongo:5.0
@@ -287,29 +289,29 @@ jobs:
         env:
           MONGO_INITDB_ROOT_USERNAME: testuser
           MONGO_INITDB_ROOT_PASSWORD: testpass
-      
+
       redis:
         image: redis:6.2
         ports:
           - 6379:6379
-    
+
     strategy:
       matrix:
         test-type: [unit, integration, e2e]
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
-      
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Run ${{ matrix.test-type }} tests
         run: npm run test:${{ matrix.test-type }}
         env:
@@ -317,7 +319,7 @@ jobs:
           REDIS_URL: redis://localhost:6379
           JWT_SECRET: test-jwt-secret
           NODE_ENV: test
-      
+
       - name: Upload coverage reports
         uses: codecov/codecov-action@v3
         with:
@@ -328,35 +330,35 @@ jobs:
     name: Build & Containerize
     runs-on: ubuntu-latest
     needs: test-suite
-    
+
     outputs:
       image-tag: ${{ steps.image.outputs.tag }}
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
-      
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Build application
         run: npm run build
-      
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
-      
+
       - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-      
+
       - name: Build and push Docker image
         id: image
         uses: docker/build-push-action@v4
@@ -368,7 +370,7 @@ jobs:
             riggerconnect/api:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-      
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
         with:
@@ -384,37 +386,37 @@ jobs:
     runs-on: ubuntu-latest
     needs: build-and-containerize
     if: github.ref == 'refs/heads/main'
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
-      
+
       - name: Deploy to EKS
         run: |
           # Update kubeconfig
           aws eks update-kubeconfig --region ${{ env.AWS_REGION }} --name riggerconnect-cluster
-          
+
           # Deploy infrastructure
           kubectl apply -f Infrastructure/CI-CD/Kubernetes/
-          
+
           # Update deployment image
           kubectl set image deployment/backend-deployment backend=riggerconnect/api:${{ github.sha }}
-          
+
           # Wait for rollout
           kubectl rollout status deployment/backend-deployment
-      
+
       - name: Run post-deployment tests
         run: |
           # Health check
           kubectl get pods -l app=backend
-          
+
           # API health check
           curl -f https://api.riggerconnect.com/health || exit 1
 
@@ -424,48 +426,48 @@ jobs:
     runs-on: ubuntu-latest
     needs: test-suite
     if: github.ref == 'refs/heads/main'
-    
+
     strategy:
       matrix:
         app: [RiggerConnect, RiggerJobs]
         platform: [ios, android]
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
-      
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Setup Java (Android)
         if: matrix.platform == 'android'
         uses: actions/setup-java@v3
         with:
           java-version: '11'
           distribution: 'temurin'
-      
+
       - name: Setup Android SDK
         if: matrix.platform == 'android'
         uses: android-actions/setup-android@v2
-      
+
       - name: Build Android app
         if: matrix.platform == 'android'
         run: |
           cd ${{ matrix.app }}App/android
           ./gradlew assembleRelease
-      
+
       - name: Setup Xcode (iOS)
         if: matrix.platform == 'ios'
         uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: latest-stable
-      
+
       - name: Build iOS app
         if: matrix.platform == 'ios'
         run: |
@@ -502,24 +504,24 @@ spec:
         app: integration-backend
     spec:
       containers:
-      - name: backend
-        image: riggerconnect/api:staging
-        ports:
-        - containerPort: 3000
-        env:
-        - name: NODE_ENV
-          value: "integration"
-        - name: MONGO_URI
-          value: "mongodb://mongodb-integration:27017/riggerconnect_integration"
-        - name: REDIS_URL
-          value: "redis://redis-integration:6379"
-        resources:
-          requests:
-            memory: "128Mi"
-            cpu: "100m"
-          limits:
-            memory: "256Mi"
-            cpu: "200m"
+        - name: backend
+          image: riggerconnect/api:staging
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: 'integration'
+            - name: MONGO_URI
+              value: 'mongodb://mongodb-integration:27017/riggerconnect_integration'
+            - name: REDIS_URL
+              value: 'redis://redis-integration:6379'
+          resources:
+            requests:
+              memory: '128Mi'
+              cpu: '100m'
+            limits:
+              memory: '256Mi'
+              cpu: '200m'
 ```
 
 ### Environment-Specific Testing
@@ -570,12 +572,12 @@ echo "✅ Integration tests completed successfully!"
 
 ### System-Level Testing Environments
 
-| Environment | Purpose | Configuration | Data |
-|-------------|---------|---------------|------|
-| **Development** | Local development | Docker Compose | Mock data |
-| **Integration** | Component integration | Kubernetes | Sanitized data |
-| **Staging** | Pre-production testing | AWS EKS | Production-like data |
-| **Production** | Live system | AWS EKS | Live data |
+| Environment     | Purpose                | Configuration  | Data                 |
+| --------------- | ---------------------- | -------------- | -------------------- |
+| **Development** | Local development      | Docker Compose | Mock data            |
+| **Integration** | Component integration  | Kubernetes     | Sanitized data       |
+| **Staging**     | Pre-production testing | AWS EKS        | Production-like data |
+| **Production**  | Live system            | AWS EKS        | Live data            |
 
 ---
 
@@ -667,8 +669,8 @@ spec:
   selector:
     app: health-check
   ports:
-  - port: 8080
-    targetPort: 8080
+    - port: 8080
+      targetPort: 8080
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -685,25 +687,25 @@ spec:
         app: health-check
     spec:
       containers:
-      - name: health-check
-        image: riggerconnect/health-check:latest
-        ports:
-        - containerPort: 8080
-        env:
-        - name: TARGETS
-          value: "backend-service:80,mongodb-service:27017,redis-service:6379"
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 8080
-          initialDelaySeconds: 30
-          periodSeconds: 10
-        readinessProbe:
-          httpGet:
-            path: /ready
-            port: 8080
-          initialDelaySeconds: 5
-          periodSeconds: 5
+        - name: health-check
+          image: riggerconnect/health-check:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: TARGETS
+              value: 'backend-service:80,mongodb-service:27017,redis-service:6379'
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
 ```
 
 ### Monitoring Dashboard
@@ -766,19 +768,19 @@ security-scan:
   steps:
     - name: Checkout code
       uses: actions/checkout@v3
-    
+
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@master
       with:
         image-ref: 'riggerconnect/api:latest'
         format: 'sarif'
         output: 'trivy-results.sarif'
-    
+
     - name: Upload Trivy scan results
       uses: github/codeql-action/upload-sarif@v2
       with:
         sarif_file: 'trivy-results.sarif'
-    
+
     - name: SAST Scan
       uses: securecodewarrior/github-action-add-sarif@v1
       with:

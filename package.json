@@ -9,7 +9,7 @@
     "build:css": "sass assets/css/style.scss assets/css/style.css --style=compressed",
     "build:assets": "echo 'Asset optimization completed'",
     "test": "echo 'Tests not configured - Documentation project'",
-    "test:links": "find . -name '*.md' -not -path './node_modules/*' -exec markdown-link-check {} ;",
+    "test:links": "find . -name '*.md' -not -path './node_modules/*' -exec markdown-link-check {} \\;",
     "test:html": "echo 'HTML validation completed'",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "lint:check": "eslint . --ext .js,.jsx,.ts,.tsx",
@@ -54,11 +54,11 @@
     "@typescript-eslint/parser": "^6.0.0",
     "eslint": "^8.0.0",
     "eslint-config-prettier": "^9.0.0",
+    "markdown-link-check": "^3.11.0",
+    "markdownlint-cli2": "^0.18.1",
     "prettier": "^3.0.0",
     "sass": "^1.69.0",
-    "typescript": "^5.0.0",
-    "markdown-link-check": "^3.11.0",
-    "markdownlint-cli2": "^0.10.0"
+    "typescript": "^5.0.0"
   },
   "browserslist": [
     "last 2 versions",

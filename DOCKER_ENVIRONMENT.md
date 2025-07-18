@@ -1,6 +1,7 @@
 # 🐋 Tiation Rigger Docker Development Environment
 
-**Enterprise-grade unified development environment with Docker Compose featuring dark neon theme**
+**Enterprise-grade unified development environment with Docker Compose featuring
+dark neon theme**
 
 [![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
 [![Docker Compose](https://img.shields.io/badge/Docker%20Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://docs.docker.com/compose/)
@@ -13,7 +14,10 @@
 
 ## 🌟 Overview
 
-This unified development environment provides a complete, enterprise-grade Docker Compose setup for the Tiation Rigger platform. It includes all necessary services for local development, testing, and documentation with a sleek dark neon theme.
+This unified development environment provides a complete, enterprise-grade
+Docker Compose setup for the Tiation Rigger platform. It includes all necessary
+services for local development, testing, and documentation with a sleek dark
+neon theme.
 
 ## 🏗️ Architecture
 
@@ -77,15 +81,15 @@ docker-compose ps
 
 Once the environment is running, access these services:
 
-| Service | URL | Description |
-|---------|-----|-------------|
+| Service                   | URL                   | Description                             |
+| ------------------------- | --------------------- | --------------------------------------- |
 | 📖 **Documentation Site** | http://localhost:3000 | Main documentation with dark neon theme |
-| 🔗 **API Server** | http://localhost:8080 | Development API server |
-| 🔄 **Traefik Dashboard** | http://localhost:8090 | Load balancer and reverse proxy |
-| 📊 **Prometheus** | http://localhost:9090 | Metrics and monitoring |
-| 📈 **Grafana** | http://localhost:3001 | Analytics dashboard |
-| 🗄️ **PostgreSQL** | localhost:5432 | Database server |
-| 💾 **Redis** | localhost:6379 | Cache and session store |
+| 🔗 **API Server**         | http://localhost:8080 | Development API server                  |
+| 🔄 **Traefik Dashboard**  | http://localhost:8090 | Load balancer and reverse proxy         |
+| 📊 **Prometheus**         | http://localhost:9090 | Metrics and monitoring                  |
+| 📈 **Grafana**            | http://localhost:3001 | Analytics dashboard                     |
+| 🗄️ **PostgreSQL**         | localhost:5432        | Database server                         |
+| 💾 **Redis**              | localhost:6379        | Cache and session store                 |
 
 ## 🎨 Dark Neon Theme
 
@@ -100,9 +104,8 @@ The entire environment is designed with a **dark neon theme** featuring:
 
 ### 📖 Documentation Server (Nginx)
 
-**Container**: `tiation-rigger-docs`
-**Port**: 3000
-**Features**:
+**Container**: `tiation-rigger-docs` **Port**: 3000 **Features**:
+
 - Optimized Nginx configuration for documentation serving
 - Gzip compression and caching
 - Security headers and rate limiting
@@ -111,9 +114,8 @@ The entire environment is designed with a **dark neon theme** featuring:
 
 ### 🔗 API Server (Node.js)
 
-**Container**: `tiation-rigger-api`
-**Port**: 8080
-**Features**:
+**Container**: `tiation-rigger-api` **Port**: 8080 **Features**:
+
 - Express.js with TypeScript support
 - Hot reloading with nodemon
 - CORS configuration for development
@@ -122,9 +124,8 @@ The entire environment is designed with a **dark neon theme** featuring:
 
 ### 🗄️ Database (PostgreSQL)
 
-**Container**: `tiation-rigger-db`
-**Port**: 5432
-**Features**:
+**Container**: `tiation-rigger-db` **Port**: 5432 **Features**:
+
 - PostgreSQL 15 with Alpine Linux
 - Automated schema initialization
 - Sample data for development
@@ -133,9 +134,8 @@ The entire environment is designed with a **dark neon theme** featuring:
 
 ### 💾 Cache (Redis)
 
-**Container**: `tiation-rigger-cache`
-**Port**: 6379
-**Features**:
+**Container**: `tiation-rigger-cache` **Port**: 6379 **Features**:
+
 - Redis 7 with persistence
 - Custom configuration for development
 - Memory optimization
@@ -144,9 +144,8 @@ The entire environment is designed with a **dark neon theme** featuring:
 
 ### 🔄 Load Balancer (Traefik)
 
-**Container**: `tiation-rigger-proxy`
-**Port**: 80, 443, 8090
-**Features**:
+**Container**: `tiation-rigger-proxy` **Port**: 80, 443, 8090 **Features**:
+
 - Automatic service discovery
 - SSL termination
 - Rate limiting and security
@@ -155,9 +154,8 @@ The entire environment is designed with a **dark neon theme** featuring:
 
 ### 📊 Monitoring (Prometheus)
 
-**Container**: `tiation-rigger-prometheus`
-**Port**: 9090
-**Features**:
+**Container**: `tiation-rigger-prometheus` **Port**: 9090 **Features**:
+
 - Service metrics collection
 - Custom alerting rules
 - Performance monitoring
@@ -166,9 +164,8 @@ The entire environment is designed with a **dark neon theme** featuring:
 
 ### 📈 Analytics (Grafana)
 
-**Container**: `tiation-rigger-grafana`
-**Port**: 3001
-**Features**:
+**Container**: `tiation-rigger-grafana` **Port**: 3001 **Features**:
+
 - Pre-configured dashboards
 - Dark neon theme
 - Prometheus data source
@@ -177,8 +174,8 @@ The entire environment is designed with a **dark neon theme** featuring:
 
 ### 🛠️ Development Tools
 
-**Container**: `tiation-rigger-dev-tools`
-**Features**:
+**Container**: `tiation-rigger-dev-tools` **Features**:
+
 - Ubuntu 22.04 with development tools
 - Node.js, Python, Docker CLI
 - Git, vim, htop, and more
@@ -187,8 +184,8 @@ The entire environment is designed with a **dark neon theme** featuring:
 
 ### 👀 File Watcher
 
-**Container**: `tiation-rigger-watcher`
-**Features**:
+**Container**: `tiation-rigger-watcher` **Features**:
+
 - Hot reloading for documentation
 - CSS/JS change detection
 - Automatic server restart
@@ -239,7 +236,7 @@ services:
       - ./custom-docs:/usr/share/nginx/html/custom
     environment:
       - CUSTOM_THEME=true
-      
+
   api-server:
     environment:
       - DEBUG=true
@@ -328,7 +325,8 @@ dev-shell        # docker-compose exec dev-tools bash
 
 ### Production Security Notes
 
-⚠️ **Important**: This environment is configured for development. For production:
+⚠️ **Important**: This environment is configured for development. For
+production:
 
 1. Change all default passwords
 2. Enable SSL/TLS certificates
@@ -511,16 +509,20 @@ tiation-rigger-workspace-docs/
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
+for details.
 
 ## 🔗 Links
 
-- **GitHub Repository**: [tiation-rigger-workspace-docs](https://github.com/tiation/tiation-rigger-workspace-docs)
+- **GitHub Repository**:
+  [tiation-rigger-workspace-docs](https://github.com/tiation/tiation-rigger-workspace-docs)
 - **GitHub Organization**: [tiation](https://github.com/tiation)
-- **Live Documentation**: [tiation.github.io/tiation-rigger-workspace-docs](https://tiation.github.io/tiation-rigger-workspace-docs)
+- **Live Documentation**:
+  [tiation.github.io/tiation-rigger-workspace-docs](https://tiation.github.io/tiation-rigger-workspace-docs)
 
 ---
 
 **🎯 Built with ❤️ by the [Tiation](https://github.com/tiation) team**
 
-*Enterprise-grade development environment featuring dark neon theme and comprehensive monitoring*
+_Enterprise-grade development environment featuring dark neon theme and
+comprehensive monitoring_

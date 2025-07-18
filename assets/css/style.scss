@@ -34,7 +34,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: 
+  background:
     radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
     radial-gradient(circle at 80% 80%, rgba(255, 0, 255, 0.1) 0%, transparent 50%),
     radial-gradient(circle at 60% 40%, rgba(0, 255, 65, 0.1) 0%, transparent 50%);
@@ -43,8 +43,12 @@ body::before {
 }
 
 @keyframes pulse {
-  0% { opacity: 0.3; }
-  100% { opacity: 0.6; }
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.6;
+  }
 }
 
 // Header styling
@@ -68,8 +72,12 @@ body::before {
 }
 
 @keyframes glow {
-  from { filter: brightness(1); }
-  to { filter: brightness(1.5); }
+  from {
+    filter: brightness(1);
+  }
+  to {
+    filter: brightness(1.5);
+  }
 }
 
 // Navigation
@@ -94,7 +102,12 @@ body::before {
 }
 
 // Headings with neon glow
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   background: var(--gradient-neon);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -123,7 +136,8 @@ a:hover {
 }
 
 // Code blocks with neon styling
-pre, code {
+pre,
+code {
   background: var(--bg-darker);
   border: 1px solid var(--accent-cyan);
   border-radius: 5px;
@@ -165,7 +179,8 @@ pre::before {
 }
 
 // Buttons with neon styling
-.btn, button {
+.btn,
+button {
   background: var(--gradient-cyan);
   border: none;
   color: var(--bg-dark);
@@ -178,7 +193,8 @@ pre::before {
   letter-spacing: 1px;
 }
 
-.btn:hover, button:hover {
+.btn:hover,
+button:hover {
   box-shadow: var(--glow-cyan);
   transform: scale(1.05);
 }
@@ -198,7 +214,7 @@ pre::before {
     margin: 10px;
     padding: 20px;
   }
-  
+
   h1 {
     font-size: 2rem;
   }
@@ -219,8 +235,12 @@ pre::before {
 }
 
 @keyframes pulse-glow {
-  0% { box-shadow: 0 0 10px rgba(0, 255, 65, 0.5); }
-  100% { box-shadow: 0 0 20px rgba(0, 255, 65, 0.8); }
+  0% {
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.8);
+  }
 }
 
 // Scrollbar styling

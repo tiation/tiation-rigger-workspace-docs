@@ -2,7 +2,9 @@
 
 ## 📋 Overview
 
-This document outlines the comprehensive API versioning strategy and testing approach for the RiggerConnect API, ensuring backward compatibility, smooth migrations, and robust testing practices.
+This document outlines the comprehensive API versioning strategy and testing
+approach for the RiggerConnect API, ensuring backward compatibility, smooth
+migrations, and robust testing practices.
 
 ## 🔢 Versioning Strategy
 
@@ -21,6 +23,7 @@ MAJOR.MINOR.PATCH (e.g., 1.2.3)
 ### Version Implementation
 
 #### 1. URL Path Versioning (Current)
+
 ```
 /api/v1/jobs
 /api/v2/jobs
@@ -28,37 +31,44 @@ MAJOR.MINOR.PATCH (e.g., 1.2.3)
 ```
 
 **Advantages:**
+
 - Clear and explicit
 - Easy to cache
 - Simple routing
 
 **Usage:**
+
 ```bash
 curl https://api.riggerconnect.com/v1/jobs
 ```
 
 #### 2. Header Versioning (Future)
+
 ```http
 API-Version: v1
 Accept: application/vnd.riggerconnect.v1+json
 ```
 
 **Advantages:**
+
 - Cleaner URLs
 - More flexible
 - Content negotiation
 
 **Usage:**
+
 ```bash
 curl -H "API-Version: v1" https://api.riggerconnect.com/jobs
 ```
 
 #### 3. Query Parameter Versioning (Backup)
+
 ```
 /api/jobs?version=v1
 ```
 
 **Usage:**
+
 ```bash
 curl https://api.riggerconnect.com/jobs?version=v1
 ```
@@ -67,28 +77,31 @@ curl https://api.riggerconnect.com/jobs?version=v1
 
 ### Version Support Matrix
 
-| Version | Status | Release Date | Support Until | End of Life |
-|---------|--------|--------------|---------------|-------------|
-| v3.0    | Planning | 2024-Q3     | TBD          | TBD         |
-| v2.0    | Development | 2024-Q2   | 2025-Q4      | 2026-Q2     |
-| v1.0    | **Current** | 2024-Q1   | 2025-Q1     | 2025-Q3     |
-| v0.9    | **Deprecated** | 2023-Q4 | 2024-Q2     | 2024-Q4     |
+| Version | Status         | Release Date | Support Until | End of Life |
+| ------- | -------------- | ------------ | ------------- | ----------- |
+| v3.0    | Planning       | 2024-Q3      | TBD           | TBD         |
+| v2.0    | Development    | 2024-Q2      | 2025-Q4       | 2026-Q2     |
+| v1.0    | **Current**    | 2024-Q1      | 2025-Q1       | 2025-Q3     |
+| v0.9    | **Deprecated** | 2023-Q4      | 2024-Q2       | 2024-Q4     |
 
 ### Support Phases
 
 #### 1. **Current Phase** (18 months)
+
 - Full feature support
 - Bug fixes and security updates
 - New feature development
 - Full documentation
 
 #### 2. **Maintenance Phase** (12 months)
+
 - Security updates only
 - Critical bug fixes
 - No new features
 - Limited support
 
 #### 3. **Deprecated Phase** (6 months)
+
 - Security updates only
 - Migration guidance
 - Sunset warnings
@@ -99,6 +112,7 @@ curl https://api.riggerconnect.com/jobs?version=v1
 ### What Constitutes a Breaking Change
 
 #### ❌ **Breaking Changes** (Major Version)
+
 - Removing endpoints or fields
 - Changing field types
 - Modifying response structure
@@ -107,6 +121,7 @@ curl https://api.riggerconnect.com/jobs?version=v1
 - Changing URL structure
 
 #### ✅ **Non-Breaking Changes** (Minor/Patch)
+
 - Adding new endpoints
 - Adding optional fields
 - Adding new response fields
@@ -136,24 +151,28 @@ curl https://api.riggerconnect.com/jobs?version=v1
 ### Migration Planning
 
 #### 1. **Assessment Phase**
+
 - Identify affected endpoints
 - Analyze usage patterns
 - Estimate migration effort
 - Plan rollback procedures
 
 #### 2. **Preparation Phase**
+
 - Create migration guides
 - Develop compatibility layers
 - Prepare test environments
 - Update documentation
 
 #### 3. **Execution Phase**
+
 - Gradual rollout
 - Monitor error rates
 - Provide support
 - Gather feedback
 
 #### 4. **Validation Phase**
+
 - Verify functionality
 - Performance testing
 - User acceptance
@@ -162,6 +181,7 @@ curl https://api.riggerconnect.com/jobs?version=v1
 ### Migration Tools
 
 #### API Diff Tool
+
 ```bash
 # Compare API versions
 npm run api-diff v1 v2
@@ -174,6 +194,7 @@ Breaking changes: 2
 ```
 
 #### Migration Helper
+
 ```bash
 # Generate migration guide
 npm run migration-guide v1 v2
@@ -187,6 +208,7 @@ npm run api-validate --from=v1 --to=v2
 ### Test Types
 
 #### 1. **Unit Tests**
+
 - Individual endpoint testing
 - Request/response validation
 - Error handling
@@ -199,7 +221,7 @@ describe('Jobs API v1', () => {
       .post('/api/v1/jobs')
       .send(validJobData)
       .expect(201);
-    
+
     expect(response.body.success).toBe(true);
     expect(response.body.data.id).toBeDefined();
   });
@@ -207,6 +229,7 @@ describe('Jobs API v1', () => {
 ```
 
 #### 2. **Integration Tests**
+
 - End-to-end workflows
 - Database interactions
 - External service integration
@@ -217,19 +240,20 @@ describe('Job Matching Flow', () => {
   it('should match worker to job', async () => {
     // Create job
     const job = await createJob(jobData);
-    
+
     // Create worker
     const worker = await createWorker(workerData);
-    
+
     // Trigger matching
     const match = await triggerMatching(job.id, worker.id);
-    
+
     expect(match.success).toBe(true);
   });
 });
 ```
 
 #### 3. **Contract Tests**
+
 - API contract validation
 - Schema compliance
 - Backward compatibility
@@ -238,10 +262,8 @@ describe('Job Matching Flow', () => {
 ```javascript
 describe('API Contract v1', () => {
   it('should comply with OpenAPI schema', async () => {
-    const response = await request(app)
-      .get('/api/v1/jobs')
-      .expect(200);
-    
+    const response = await request(app).get('/api/v1/jobs').expect(200);
+
     const validation = validateSchema(response.body, jobsSchema);
     expect(validation.valid).toBe(true);
   });
@@ -249,6 +271,7 @@ describe('API Contract v1', () => {
 ```
 
 #### 4. **Performance Tests**
+
 - Load testing
 - Stress testing
 - Latency testing
@@ -257,13 +280,13 @@ describe('API Contract v1', () => {
 ```javascript
 describe('Performance Tests', () => {
   it('should handle 1000 concurrent requests', async () => {
-    const requests = Array(1000).fill().map(() => 
-      request(app).get('/api/v1/jobs')
-    );
-    
+    const requests = Array(1000)
+      .fill()
+      .map(() => request(app).get('/api/v1/jobs'));
+
     const responses = await Promise.all(requests);
     const avgResponseTime = calculateAverage(responses);
-    
+
     expect(avgResponseTime).toBeLessThan(200);
   });
 });
@@ -272,6 +295,7 @@ describe('Performance Tests', () => {
 ### Test Automation
 
 #### CI/CD Pipeline
+
 ```yaml
 # .github/workflows/api-tests.yml
 name: API Tests
@@ -281,36 +305,37 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
-    
+
     strategy:
       matrix:
         api-version: [v1, v2]
-    
+
     steps:
       - uses: actions/checkout@v2
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '18'
-      
+
       - name: Install dependencies
         run: npm install
-      
+
       - name: Run unit tests
         run: npm run test:unit:${{ matrix.api-version }}
-      
+
       - name: Run integration tests
         run: npm run test:integration:${{ matrix.api-version }}
-      
+
       - name: Run contract tests
         run: npm run test:contract:${{ matrix.api-version }}
-      
+
       - name: Run performance tests
         run: npm run test:performance:${{ matrix.api-version }}
 ```
 
 #### Test Scripts
+
 ```json
 {
   "scripts": {
@@ -330,12 +355,14 @@ jobs:
 ### Test Coverage Requirements
 
 #### Coverage Targets
+
 - **Unit Tests**: 90% line coverage
 - **Integration Tests**: 80% endpoint coverage
 - **Contract Tests**: 100% schema coverage
 - **Performance Tests**: Critical paths only
 
 #### Coverage Reporting
+
 ```bash
 # Generate coverage report
 npm run test:coverage
@@ -349,22 +376,24 @@ open coverage/lcov-report/index.html
 ### Version Usage Analytics
 
 #### Metrics Collection
+
 ```javascript
 // Track API version usage
 app.use((req, res, next) => {
   const version = extractVersion(req);
-  
+
   metrics.increment('api.version.usage', {
     version,
     endpoint: req.route.path,
-    method: req.method
+    method: req.method,
   });
-  
+
   next();
 });
 ```
 
 #### Dashboard Metrics
+
 - Version adoption rates
 - Deprecated version usage
 - Migration progress
@@ -373,21 +402,22 @@ app.use((req, res, next) => {
 ### Performance Monitoring
 
 #### Response Time Tracking
+
 ```javascript
 // Track response times by version
 app.use((req, res, next) => {
   const start = Date.now();
-  
+
   res.on('finish', () => {
     const duration = Date.now() - start;
     const version = extractVersion(req);
-    
+
     metrics.timing('api.response_time', duration, {
       version,
-      endpoint: req.route.path
+      endpoint: req.route.path,
     });
   });
-  
+
   next();
 });
 ```
@@ -397,6 +427,7 @@ app.use((req, res, next) => {
 ### Version Discovery
 
 #### API Version Endpoint
+
 ```bash
 GET /api/versions
 
@@ -423,31 +454,33 @@ GET /api/versions
 ### SDK Version Management
 
 #### JavaScript SDK
+
 ```javascript
 import RiggerConnect from '@riggerconnect/sdk';
 
 // Specify version
 const client = new RiggerConnect({
   apiKey: 'your-key',
-  version: 'v1'
+  version: 'v1',
 });
 
 // Auto-detect latest
 const client = new RiggerConnect({
   apiKey: 'your-key',
-  version: 'latest'
+  version: 'latest',
 });
 ```
 
 #### Version Compatibility Matrix
+
 ```javascript
 // SDK version compatibility
 const compatibility = {
   '@riggerconnect/sdk': {
     '1.0.0': ['v1'],
     '2.0.0': ['v1', 'v2'],
-    '3.0.0': ['v2', 'v3']
-  }
+    '3.0.0': ['v2', 'v3'],
+  },
 };
 ```
 
@@ -456,6 +489,7 @@ const compatibility = {
 ### Version-Specific Documentation
 
 #### Structure
+
 ```
 docs/
 ├── api/
@@ -473,6 +507,7 @@ docs/
 ```
 
 #### Documentation Requirements
+
 - Complete endpoint documentation
 - Request/response examples
 - Error handling examples
@@ -482,6 +517,7 @@ docs/
 ### OpenAPI Specification
 
 #### Version Management
+
 ```yaml
 # openapi-v1.yaml
 openapi: 3.0.0
@@ -501,6 +537,7 @@ info:
 ## 🎯 Best Practices
 
 ### Version Design
+
 1. **Design for Change**: Plan for future modifications
 2. **Backward Compatibility**: Maintain compatibility when possible
 3. **Clear Communication**: Provide clear migration paths
@@ -508,6 +545,7 @@ info:
 5. **Monitor Usage**: Track version adoption and usage
 
 ### Testing Practices
+
 1. **Automated Testing**: Comprehensive test automation
 2. **Contract Testing**: Validate API contracts
 3. **Performance Testing**: Regular performance validation
@@ -515,6 +553,7 @@ info:
 5. **User Acceptance**: Validate with real users
 
 ### Documentation Practices
+
 1. **Version-Specific Docs**: Separate documentation per version
 2. **Migration Guides**: Clear migration instructions
 3. **Change Logs**: Detailed change documentation
@@ -523,6 +562,6 @@ info:
 
 ---
 
-*This document is maintained by the RiggerConnect API Team*  
-*Last updated: January 2024*  
-*Version: 1.0.0*
+_This document is maintained by the RiggerConnect API Team_  
+_Last updated: January 2024_  
+_Version: 1.0.0_

@@ -10,9 +10,13 @@
 
 ## 📋 Overview
 
-The RiggerConnect API provides a comprehensive set of RESTful endpoints for managing jobs, workers, payments, and automation in the construction industry job matching platform. Built with enterprise-grade security, scalability, and performance in mind.
+The RiggerConnect API provides a comprehensive set of RESTful endpoints for
+managing jobs, workers, payments, and automation in the construction industry
+job matching platform. Built with enterprise-grade security, scalability, and
+performance in mind.
 
 ### Key Features
+
 - **RESTful Architecture**: Clean, predictable API design
 - **JWT Authentication**: Secure token-based authentication
 - **Real-time Communication**: WebSocket support for live updates
@@ -22,15 +26,16 @@ The RiggerConnect API provides a comprehensive set of RESTful endpoints for mana
 
 ## 🌐 Base URLs
 
-| Environment | Base URL | Purpose |
-|-------------|----------|----------|
-| **Production** | `https://api.riggerconnect.com/v1` | Live production environment |
-| **Staging** | `https://staging-api.riggerconnect.com/v1` | Pre-production testing |
-| **Development** | `http://localhost:3000/v1` | Local development |
+| Environment     | Base URL                                   | Purpose                     |
+| --------------- | ------------------------------------------ | --------------------------- |
+| **Production**  | `https://api.riggerconnect.com/v1`         | Live production environment |
+| **Staging**     | `https://staging-api.riggerconnect.com/v1` | Pre-production testing      |
+| **Development** | `http://localhost:3000/v1`                 | Local development           |
 
 ## Authentication
 
-All API requests require authentication using JWT tokens. Include the token in the Authorization header:
+All API requests require authentication using JWT tokens. Include the token in
+the Authorization header:
 
 ```
 Authorization: Bearer YOUR_JWT_TOKEN
@@ -47,9 +52,11 @@ Authorization: Bearer YOUR_JWT_TOKEN
 ### Authentication
 
 #### POST /auth/login
+
 Login with email and password
 
 **Request:**
+
 ```json
 {
   "email": "user@example.com",
@@ -58,6 +65,7 @@ Login with email and password
 ```
 
 **Response:**
+
 ```json
 {
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
@@ -71,17 +79,21 @@ Login with email and password
 ```
 
 #### POST /auth/register
+
 Register a new user
 
 #### POST /auth/refresh
+
 Refresh JWT token
 
 ### Jobs
 
 #### GET /jobs
+
 Get list of jobs with filtering and pagination
 
 **Query Parameters:**
+
 - `page` (integer): Page number (default: 1)
 - `limit` (integer): Items per page (default: 20)
 - `location` (string): Filter by location
@@ -89,6 +101,7 @@ Get list of jobs with filtering and pagination
 - `status` (string): Filter by status
 
 **Response:**
+
 ```json
 {
   "jobs": [
@@ -107,7 +120,7 @@ Get list of jobs with filtering and pagination
         "5+ years experience"
       ],
       "compensation": {
-        "rate": 45.00,
+        "rate": 45.0,
         "type": "hourly"
       },
       "schedule": {
@@ -125,74 +138,94 @@ Get list of jobs with filtering and pagination
 ```
 
 #### POST /jobs
+
 Create a new job posting
 
 #### GET /jobs/:id
+
 Get job details by ID
 
 #### PUT /jobs/:id
+
 Update job details
 
 #### DELETE /jobs/:id
+
 Delete job posting
 
 ### Workers
 
 #### GET /workers
+
 Get list of workers with filtering
 
 **Query Parameters:**
+
 - `skills` (array): Filter by skills
 - `location` (string): Filter by location
 - `availability` (string): Filter by availability
 - `certification` (string): Filter by certification
 
 #### GET /workers/:id
+
 Get worker profile details
 
 #### PUT /workers/:id/profile
+
 Update worker profile
 
 #### GET /workers/:id/certifications
+
 Get worker certifications
 
 #### POST /workers/:id/compliance-check
+
 Perform compliance verification
 
 ### Payments
 
 #### POST /payments/charge
+
 Create payment charge
 
 #### GET /payments/:id
+
 Get payment details
 
 #### POST /payments/payout
+
 Process worker payout
 
 #### GET /payments/history
+
 Get payment history
 
 ### Notifications
 
 #### GET /notifications
+
 Get user notifications
 
 #### POST /notifications
+
 Send notification
 
 #### PUT /notifications/:id/read
+
 Mark notification as read
 
 ### Analytics
 
 #### GET /analytics/dashboard
+
 Get dashboard statistics
 
 #### GET /analytics/jobs
+
 Get job analytics
 
 #### GET /analytics/workers
+
 Get worker analytics
 
 ## Error Handling
@@ -259,13 +292,13 @@ const RiggerConnect = require('@riggerconnect/sdk');
 
 const client = new RiggerConnect({
   apiKey: 'your-api-key',
-  baseUrl: 'https://api.riggerconnect.com/v1'
+  baseUrl: 'https://api.riggerconnect.com/v1',
 });
 
 // Get jobs
 const jobs = await client.jobs.list({
   location: 'Seattle, WA',
-  limit: 10
+  limit: 10,
 });
 
 // Create job
@@ -301,4 +334,5 @@ Use our testing environment for development:
 - **Test API Key**: Available in your developer dashboard
 - **Test Data**: Pre-populated with sample jobs and workers
 
-For more detailed examples and advanced usage, visit our [Developer Portal](https://developers.riggerconnect.com).
+For more detailed examples and advanced usage, visit our
+[Developer Portal](https://developers.riggerconnect.com).

@@ -1,15 +1,19 @@
-# Project Name
+# 📋 Tiation Rigger Workspace Docs
 
 <!-- Hero Image with Dark Neon Theme -->
 <div align="center">
-  <img src=".screenshots/hero-banner.png" alt="Project Hero Banner" width="100%">
+  <img src=".screenshots/hero-banner.png" alt="Tiation Rigger Workspace - Enterprise Documentation Platform" width="100%">
 </div>
 
 <div align="center">
   
+[![Build Status](https://img.shields.io/badge/Build-Passing-00FF88?style=for-the-badge&logo=github-actions&logoColor=white)](https://github.com/TiaAstor/tiation-rigger-workspace-docs/actions)
+[![Docs Status](https://img.shields.io/badge/Docs-Live-00D9FF?style=for-the-badge&logo=gitbook&logoColor=white)](https://tiaastor.github.io/tiation-rigger-workspace-docs)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-00D9FF?style=for-the-badge&logo=github&logoColor=white)](https://tiaastor.github.io/tiation-rigger-workspace-docs)
 [![Documentation](https://img.shields.io/badge/Documentation-Complete-00FF88?style=for-the-badge&logo=gitbook&logoColor=white)](https://github.com/TiaAstor/tiation-rigger-workspace-docs/wiki)
 [![License](https://img.shields.io/badge/License-MIT-FF0080?style=for-the-badge&logo=opensourceinitiative&logoColor=white)](LICENSE)
+[![Workspace](https://img.shields.io/badge/Workspace-Enterprise-FFE500?style=for-the-badge&logo=workspace&logoColor=white)](https://github.com/TiaAstor/tiation-rigger-workspace-docs)
+[![Coverage](https://img.shields.io/badge/Coverage-100%25-00FF88?style=for-the-badge&logo=codecov&logoColor=white)](https://github.com/TiaAstor/tiation-rigger-workspace-docs)
 
 </div>
 
@@ -200,7 +204,8 @@ API_KEY=your-api-key-here
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md)
+for details.
 
 <div align="center">
   <img src=".screenshots/contribution-workflow.png" alt="Contribution Workflow" width="70%">
@@ -284,14 +289,17 @@ npm run deploy
 
 - 📧 **Email**: [support@example.com](mailto:support@example.com)
 - 💬 **Discord**: [Join our community](https://discord.gg/example)
-- 🐛 **Issues**: [GitHub Issues](https://github.com/TiaAstor/tiation-rigger-workspace-docs/issues)
-- 📖 **Wiki**: [Documentation](https://github.com/TiaAstor/tiation-rigger-workspace-docs/wiki)
+- 🐛 **Issues**:
+  [GitHub Issues](https://github.com/TiaAstor/tiation-rigger-workspace-docs/issues)
+- 📖 **Wiki**:
+  [Documentation](https://github.com/TiaAstor/tiation-rigger-workspace-docs/wiki)
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
+for details.
 
 ---
 

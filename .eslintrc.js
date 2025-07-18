@@ -7,10 +7,7 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: [
-    'eslint:recommended',
-    'prettier',
-  ],
+  extends: ['eslint:recommended', 'prettier'],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
@@ -35,11 +32,11 @@ module.exports = {
     'object-shorthand': 'error',
     'prefer-arrow-callback': 'error',
     'prefer-template': 'error',
-    
+
     // Best Practices
     'consistent-return': 'error',
-    'curly': 'error',
-    'eqeqeq': 'error',
+    curly: 'error',
+    eqeqeq: 'error',
     'no-eval': 'error',
     'no-implied-eval': 'error',
     'no-new-func': 'error',
@@ -54,28 +51,23 @@ module.exports = {
     'no-useless-return': 'error',
     'no-void': 'error',
     'prefer-promise-reject-errors': 'error',
-    'radix': 'error',
+    radix: 'error',
   },
-  overrides: [
-    {
-      files: ['**/*.ts', '**/*.tsx'],
-      parser: '@typescript-eslint/parser',
-      plugins: ['@typescript-eslint'],
-      extends: [
-        'eslint:recommended',
-        '@typescript-eslint/recommended',
-        'prettier',
-      ],
-      parserOptions: {
-        ecmaVersion: 'latest',
-        sourceType: 'module',
-      },
-      rules: {
-        '@typescript-eslint/no-explicit-any': 'warn',
-        '@typescript-eslint/no-unused-vars': 'error',
-        '@typescript-eslint/prefer-nullish-coalescing': 'error',
-        '@typescript-eslint/prefer-optional-chain': 'error',
-      },
-    },
-  ],
+  // TypeScript support available when needed
+  // overrides: [
+  //   {
+  //     files: ['**/*.ts', '**/*.tsx'],
+  //     parser: '@typescript-eslint/parser',
+  //     plugins: ['@typescript-eslint'],
+  //     extends: [
+  //       'eslint:recommended',
+  //       '@typescript-eslint/recommended',
+  //       'prettier',
+  //     ],
+  //     rules: {
+  //       '@typescript-eslint/no-explicit-any': 'warn',
+  //       '@typescript-eslint/no-unused-vars': 'error',
+  //     },
+  //   },
+  // ],
 };
