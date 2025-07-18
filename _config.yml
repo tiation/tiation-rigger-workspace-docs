@@ -1,0 +1,62 @@
+# GitHub Pages Configuration for tiation-rigger-workspace-docs
+
+title: "tiation-rigger-workspace-docs"
+description: "Enterprise-grade solutions with comprehensive documentation"
+url: "https://tiation.github.io/tiation-rigger-workspace-docs"
+baseurl: "/tiation-rigger-workspace-docs"
+
+# Theme
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# SEO
+author: "Tiation"
+twitter:
+  username: tiation
+  card: summary_large_image
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# Exclude from processing
+exclude:
+  - node_modules/
+  - .cache/
+  - .parcel-cache/
+  - .DS_Store
+  - Thumbs.db
+
+# Include
+include:
+  - _pages
+  - promotional
+
+# Collections
+collections:
+  docs:
+    output: true
+    permalink: /:collection/:name/
+
+# Default settings
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Tiation"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+  - scope:
+      path: ""
+      type: "docs"
+    values:
+      layout: "doc"
