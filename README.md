@@ -27,22 +27,90 @@
 
 ```mermaid
 graph TB
-    A[Component 1] --> B[Component 2]
-    B --> C[Component 3]
-    C --> D[Component 4]
+    subgraph "Frontend Layer"
+        A[RiggerConnect Mobile App<br/>React Native + TypeScript] 
+        B[RiggerJobs Web App<br/>React + Next.js]
+        C[Metrics Dashboard<br/>React + D3.js + Chart.js]
+    end
     
-    style A fill:#00ffff,stroke:#ff00ff,stroke-width:2px
-    style B fill:#ff00ff,stroke:#00ffff,stroke-width:2px
-    style C fill:#00ffff,stroke:#ff00ff,stroke-width:2px
-    style D fill:#ff00ff,stroke:#00ffff,stroke-width:2px
+    subgraph "API Gateway"
+        D[API Gateway<br/>Kong + OAuth2]
+    end
+    
+    subgraph "Backend Services"
+        E[Automation Server<br/>Node.js + Express]
+        F[Shared Libraries<br/>TypeScript + Jest]
+        G[Connect API<br/>REST + GraphQL]
+    end
+    
+    subgraph "Data Layer"
+        H[MongoDB Cluster<br/>Primary + Replicas]
+        I[Redis Cache<br/>Session + Queue]
+        J[File Storage<br/>AWS S3 + CDN]
+    end
+    
+    subgraph "Infrastructure"
+        K[Container Orchestration<br/>Docker + Kubernetes]
+        L[CI/CD Pipeline<br/>GitHub Actions + ArgoCD]
+        M[Monitoring<br/>Prometheus + Grafana]
+    end
+    
+    A --> D
+    B --> D
+    C --> D
+    D --> E
+    D --> G
+    E --> F
+    G --> F
+    E --> H
+    E --> I
+    G --> H
+    G --> J
+    E --> K
+    G --> K
+    K --> L
+    K --> M
+    
+    style A fill:#00ffff,stroke:#ff00ff,stroke-width:2px,color:#000
+    style B fill:#ff00ff,stroke:#00ffff,stroke-width:2px,color:#000
+    style C fill:#00ffff,stroke:#ff00ff,stroke-width:2px,color:#000
+    style D fill:#ff00ff,stroke:#00ffff,stroke-width:2px,color:#000
+    style E fill:#00ffff,stroke:#ff00ff,stroke-width:2px,color:#000
+    style F fill:#ff00ff,stroke:#00ffff,stroke-width:2px,color:#000
+    style G fill:#00ffff,stroke:#ff00ff,stroke-width:2px,color:#000
+    style H fill:#ff00ff,stroke:#00ffff,stroke-width:2px,color:#000
+    style I fill:#00ffff,stroke:#ff00ff,stroke-width:2px,color:#000
+    style J fill:#ff00ff,stroke:#00ffff,stroke-width:2px,color:#000
+    style K fill:#00ffff,stroke:#ff00ff,stroke-width:2px,color:#000
+    style L fill:#ff00ff,stroke:#00ffff,stroke-width:2px,color:#000
+    style M fill:#00ffff,stroke:#ff00ff,stroke-width:2px,color:#000
 ```
 
 ### Technology Stack
 
-- **Frontend**: Modern Frontend
-- **Backend**: Scalable Backend
-- **Database**: Database
-- **Infrastructure**: Infrastructure
+#### **Frontend Technologies**
+- **Mobile**: React Native 0.72+, TypeScript, Expo SDK
+- **Web**: React 18+, Next.js 13+, Redux Toolkit
+- **UI/UX**: Dark Neon Theme, Responsive Design, PWA Support
+- **Testing**: Jest, React Testing Library, Detox (E2E)
+
+#### **Backend Technologies** 
+- **Runtime**: Node.js 18+, TypeScript 5+
+- **Framework**: Express.js, Fastify (high performance)
+- **API**: REST, GraphQL, WebSocket (real-time)
+- **Authentication**: JWT, OAuth2, SAML SSO
+
+#### **Database & Storage**
+- **Primary DB**: MongoDB 6+ (Atlas Cloud)
+- **Caching**: Redis 7+ (Cluster mode)
+- **File Storage**: AWS S3, CloudFront CDN
+- **Search**: Elasticsearch 8+ (full-text search)
+
+#### **Infrastructure & DevOps**
+- **Containers**: Docker, Kubernetes (EKS)
+- **CI/CD**: GitHub Actions, ArgoCD
+- **Monitoring**: Prometheus, Grafana, Jaeger
+- **Cloud**: AWS (multi-region), Terraform IaC
 
 ---
 
@@ -64,7 +132,29 @@ graph TB
 
 ## ✨ Features
 
-{{FEATURES_LIST}}
+### 🚀 **Enterprise-Grade Platform**
+- **Scalable Architecture**: Cloud-native design supporting thousands of concurrent users
+- **Real-time Synchronization**: Instant data sync across mobile and web applications
+- **Advanced Security**: Enterprise-level authentication, encryption, and access controls
+- **Comprehensive Analytics**: Deep insights into workforce performance and project metrics
+- **Multi-platform Support**: Native iOS/Android apps + responsive web applications
+- **Offline Capabilities**: Full functionality without internet connectivity
+
+### 🛠️ **Professional Tools**
+- **Job Management System**: Complete lifecycle from posting to completion
+- **Rigger Network Platform**: AI-powered matching of skills to opportunities
+- **Automated Workflows**: Streamlined processes with intelligent automation
+- **Document Management**: Centralized storage for certificates, permits, and documentation
+- **Communication Hub**: Integrated messaging and notification system
+- **Compliance Tracking**: Automated safety and regulatory compliance monitoring
+
+### 📊 **Business Intelligence**
+- **Performance Dashboards**: Real-time KPI tracking and reporting
+- **Predictive Analytics**: Forecast demand and optimize resource allocation
+- **Cost Management**: Detailed financial tracking and budget optimization
+- **Quality Assurance**: Automated quality control and performance monitoring
+- **Custom Reporting**: Flexible report generation for stakeholders
+- **Integration APIs**: Seamless connection with existing enterprise systems
 
 ---
 
@@ -76,11 +166,16 @@ git clone https://github.com/tiation/tiation-rigger-workspace-docs.git
 cd tiation-rigger-workspace-docs
 
 # Install dependencies
-{{INSTALL_COMMANDS}}
+npm install
 
-# Run the application
-{{RUN_COMMANDS}}
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
 ```
+
+**🌐 Live Documentation**: [https://tiation.github.io/tiation-rigger-workspace-docs](https://tiation.github.io/tiation-rigger-workspace-docs)
 
 ---
 
@@ -88,7 +183,11 @@ cd tiation-rigger-workspace-docs
 
 ### Prerequisites
 
-{{PREREQUISITES}}
+- **Node.js**: Version 18.0.0 or higher
+- **npm**: Version 8.0.0 or higher
+- **Git**: Latest version
+- **Modern Browser**: Chrome 90+, Firefox 88+, Safari 14+
+- **Optional**: Docker for containerized development
 
 ### Installation Steps
 
@@ -100,12 +199,35 @@ cd tiation-rigger-workspace-docs
 
 2. **Install dependencies**
    ```bash
-   {{DETAILED_INSTALL_COMMANDS}}
+   # Install all project dependencies
+   npm install
+   
+   # Install optional development tools
+   npm install --save-dev
+   
+   # Verify installation
+   npm run test
    ```
 
-3. **Configuration**
+3. **Environment Configuration**
    ```bash
-   {{CONFIG_COMMANDS}}
+   # Copy environment template
+   cp .env.example .env
+   
+   # Configure your environment variables
+   # Edit .env file with your specific settings
+   
+   # Validate configuration
+   npm run lint
+   ```
+
+4. **Docker Setup (Optional)**
+   ```bash
+   # Build Docker image
+   docker build -f Dockerfile.docs -t tiation-rigger-docs .
+   
+   # Run containerized version
+   docker-compose up -d
    ```
 
 ---
@@ -114,15 +236,116 @@ cd tiation-rigger-workspace-docs
 
 ### Basic Usage
 
-{{BASIC_USAGE}}
+#### **Development Server**
+```bash
+# Start local development server
+npm run dev
+# Access at http://localhost:8000
+```
+
+#### **Documentation Navigation**
+- **📋 Getting Started**: Complete setup and deployment guide
+- **🏗️ Architecture**: System design and component interactions
+- **📚 API Reference**: Comprehensive endpoint documentation
+- **🔧 Developer Guide**: Code examples and best practices
+- **🚀 Deployment**: Production deployment strategies
 
 ### Advanced Usage
 
-{{ADVANCED_USAGE}}
+#### **Custom Theme Configuration**
+```bash
+# Build custom CSS with dark neon theme
+npm run build:css
+
+# Customize color variables in assets/css/style.scss
+# --neon-cyan: #00ffff
+# --neon-magenta: #ff00ff
+# --gradient-primary: linear-gradient(135deg, #00ffff 0%, #ff00ff 100%)
+```
+
+#### **Content Management**
+```bash
+# Validate all documentation links
+npm run test:links
+
+# Format all markdown files
+npm run format
+
+# Run comprehensive quality checks
+npm run ci
+```
+
+#### **Production Deployment**
+```bash
+# Build optimized production version
+npm run build
+
+# Deploy to GitHub Pages
+git add .
+git commit -m "Deploy documentation updates"
+git push origin main
+```
 
 ### Examples
 
-{{USAGE_EXAMPLES}}
+#### **API Integration Example**
+```javascript
+// Connect to Rigger Platform API
+const riggerAPI = new RiggerAPI({
+  baseURL: 'https://api.riggerconnect.com',
+  apiKey: process.env.RIGGER_API_KEY,
+  version: 'v1'
+});
+
+// Fetch active jobs
+const jobs = await riggerAPI.jobs.getActive({
+  location: 'Sydney',
+  skills: ['crane-operator', 'rigger-level-3'],
+  urgent: true
+});
+```
+
+#### **Mobile App Integration**
+```typescript
+// React Native component example
+import { RiggerConnectSDK } from '@tiation/rigger-sdk';
+
+const JobsList = () => {
+  const [jobs, setJobs] = useState([]);
+  
+  useEffect(() => {
+    RiggerConnectSDK.getAvailableJobs()
+      .then(setJobs)
+      .catch(console.error);
+  }, []);
+  
+  return (
+    <JobsContainer>
+      {jobs.map(job => (
+        <JobCard key={job.id} job={job} />
+      ))}
+    </JobsContainer>
+  );
+};
+```
+
+#### **Infrastructure as Code**
+```yaml
+# docker-compose.yml for local development
+version: '3.8'
+services:
+  docs:
+    build:
+      context: .
+      dockerfile: Dockerfile.docs
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/workspace
+    environment:
+      - NODE_ENV=development
+      - THEME=dark-neon
+```
 
 ---
 
@@ -170,7 +393,21 @@ A: We offer community support through GitHub Issues and professional enterprise 
 ### Technical Questions
 
 **Q: What are the system requirements?**
-A: {{SYSTEM_REQUIREMENTS}}
+A: **Minimum System Requirements:**
+- **OS**: Windows 10+, macOS 10.15+, Ubuntu 20.04+
+- **Memory**: 8GB RAM (16GB recommended)
+- **Storage**: 10GB free space
+- **CPU**: 2-core (4-core recommended)
+- **Network**: Broadband internet connection
+- **Browser**: Chrome 90+, Firefox 88+, Safari 14+, Edge 90+
+
+**Production Environment:**
+- **Server**: AWS EC2 t3.medium or equivalent
+- **Database**: MongoDB 6+ with 3-node replica set
+- **Cache**: Redis 7+ cluster with 3 nodes
+- **Load Balancer**: Application Load Balancer (ALB)
+- **CDN**: CloudFront for global content delivery
+- **Monitoring**: CloudWatch, Prometheus, Grafana stack
 
 **Q: How do I handle large scale deployments?**
 A: See our [Deployment Guide](docs/deployment.md) for enterprise-scale deployment strategies.

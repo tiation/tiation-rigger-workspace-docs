@@ -1,31 +1,114 @@
-# GitHub Pages Configuration
-title: "tiation-rigger-workspace-docs"
-description: "Enterprise-grade solution in the Tiation ecosystem"
-url: "https://tiation.github.io/tiation-rigger-workspace-docs"
-baseurl: ""
+# GitHub Pages Configuration for tiation-rigger-workspace-docs
+title: "Tiation Rigger Workspace Documentation"
+description: "Enterprise-grade documentation for Tiation Rigger platform with dark neon theme"
+author: "Tiation Team"
+email: "tiatheone@protonmail.com"
+baseurl: "/tiation-rigger-workspace-docs"
+url: "https://tiation.github.io"
 
-# Theme
+# Theme Configuration
 theme: minima
+
+# Dark Neon Theme Colors
+minima:
+  skin: dark
+  social_links:
+    github: tiation
+    email: tiatheone@protonmail.com
+
+# Build settings
 markdown: kramdown
 highlighter: rouge
-
-# Plugins
 plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
+  - jekyll-github-metadata
 
-# Dark neon theme
+# Exclude from processing
+exclude:
+  - node_modules
+  - package.json
+  - package-lock.json
+  - .gitignore
+  - README_OLD.md
+  - scripts/
+  - backups/
+  - logs/
+  - data/
+  - .screenshots/
+
+# Include files
+include:
+  - _pages
+  - docs
+  - assets
+  - promotional
+
+# Collections
+collections:
+  docs:
+    output: true
+    permalink: /:collection/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Tiation Team"
+  - scope:
+      path: ""
+      type: "docs"
+    values:
+      layout: "page"
+      author: "Tiation Team"
+
+# SEO settings
+lang: en-US
+twitter:
+  username: tiation
+  card: summary_large_image
+
+# Navigation
+header_pages:
+  - index.html
+  - getting-started.html
+  - docs/architecture.md
+  - docs/api-reference.md
+  - docs/developer-guide.md
+  - docs/deployment.md
+
+# Sass configuration
+sass:
+  sass_dir: assets/css
+  style: compressed
+
+# Dark neon theme custom CSS
 custom_css: |
   :root {
-    --primary-color: #00ffff;
-    --secondary-color: #ff00ff;
-    --background-color: #0a0a0a;
-    --text-color: #ffffff;
-    --accent-color: #00ff88;
+    --primary-bg: #0a0a0a;
+    --secondary-bg: #1a1a1a;
+    --accent-bg: #2a2a2a;
+    --neon-cyan: #00ffff;
+    --neon-magenta: #ff00ff;
+    --neon-blue: #007fff;
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --text-accent: #dedede;
+    --gradient-primary: linear-gradient(135deg, #00ffff 0%, #ff00ff 100%);
+    --gradient-secondary: linear-gradient(45deg, #007fff 0%, #00ffff 50%, #ff00ff 100%);
+    --shadow-neon: 0 0 20px rgba(0, 255, 255, 0.3);
+    --shadow-glow: 0 0 30px rgba(255, 0, 255, 0.2);
   }
   
   body {
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
-    color: var(--text-color);
+    background: var(--primary-bg);
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(255, 0, 255, 0.1) 0%, transparent 50%);
+    color: var(--text-primary);
+    line-height: 1.6;
   }
