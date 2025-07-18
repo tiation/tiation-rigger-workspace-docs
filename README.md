@@ -1,209 +1,190 @@
-# 🌟 tiation-rigger-workspace-docs
-
-<div align="center">
-  <img src="assets/hero-banner.png" alt="tiation-rigger-workspace-docs - Enterprise Grade Solution" width="100%">
-</div>
+# tiation-rigger-workspace-docs
 
 <div align="center">
 
-[![Build Status](https://img.shields.io/badge/Build-Passing-00FF88?style=for-the-badge&logo=github-actions&logoColor=white)](https://github.com/tiaastor/tiation-rigger-workspace-docs/actions)
-[![Enterprise Grade](https://img.shields.io/badge/Enterprise-Grade-00D9FF?style=for-the-badge&logo=shield&logoColor=white)](https://github.com/tiaastor/tiation-rigger-workspace-docs)
-[![Dark Neon Theme](https://img.shields.io/badge/Theme-Dark%20Neon-FF0080?style=for-the-badge&logo=palette&logoColor=white)](https://github.com/tiaastor/tiation-rigger-workspace-docs)
-[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-00D9FF?style=for-the-badge&logo=github&logoColor=white)](https://tiaastor.github.io/tiation-rigger-workspace-docs)
-[![Documentation](https://img.shields.io/badge/Documentation-Complete-00FF88?style=for-the-badge&logo=gitbook&logoColor=white)](https://github.com/tiaastor/tiation-rigger-workspace-docs/wiki)
-[![License](https://img.shields.io/badge/License-MIT-FF0080?style=for-the-badge&logo=opensourceinitiative&logoColor=white)](LICENSE)
+![Tiation Ecosystem](https://img.shields.io/badge/🔮_TIATION_ECOSYSTEM-tiation_rigger_workspace_docs-00FFFF?style=for-the-badge&labelColor=0A0A0A&color=007FFF)
+
+**Professional documentation for Tiation Rigger workspace**
+
+*Comprehensive • Professional • Well-Documented*
+
+[![📚_Documentation](https://img.shields.io/badge/📚_Documentation-Complete-007FFF?style=flat-square&labelColor=0A0A0A)](https://github.com/tiation/tiation-rigger-workspace-docs)
+[![🏗️_Workspace](https://img.shields.io/badge/🏗️_Workspace-Rigger_Platform-00FFFF?style=flat-square&labelColor=0A0A0A)](https://github.com/tiation/tiation-rigger-workspace-docs)
+[![📋_Guides](https://img.shields.io/badge/📋_Guides-Professional-FF00FF?style=flat-square&labelColor=0A0A0A)](https://github.com/tiation/tiation-rigger-workspace-docs)
+[![🔧_Technical](https://img.shields.io/badge/🔧_Technical-Reference-007FFF?style=flat-square&labelColor=0A0A0A)](https://github.com/tiation/tiation-rigger-workspace-docs)
 
 </div>
 
-## 🚀 Overview
-
-Comprehensive rigger workforce management documentation - An enterprise-grade solution featuring a dark neon theme with cyan/magenta gradient accents, designed for professional deployment and scalability.
-
+---
 <div align="center">
-  <img src="assets/overview-demo.png" alt="Project Overview" width="80%">
-</div>
+
+
+## 🏗️ Architecture
+
+![Architecture Diagram](assets/architecture/tiation-rigger-workspace-docs-architecture.svg)
+
+### System Components
+
+```mermaid
+graph TB
+    A[Component 1] --> B[Component 2]
+    B --> C[Component 3]
+    C --> D[Component 4]
+    
+    style A fill:#00ffff,stroke:#ff00ff,stroke-width:2px
+    style B fill:#ff00ff,stroke:#00ffff,stroke-width:2px
+    style C fill:#00ffff,stroke:#ff00ff,stroke-width:2px
+    style D fill:#ff00ff,stroke:#00ffff,stroke-width:2px
+```
+
+### Technology Stack
+
+- **Frontend**: Modern Frontend
+- **Backend**: Scalable Backend
+- **Database**: Database
+- **Infrastructure**: Infrastructure
+
+---
+
+## 📋 Table of Contents
+
+- [Features](#-features)
+- [Quick Start](#-quick-start)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [Documentation](#-documentation)
+- [Screenshots](#-screenshots)
+- [FAQ](#-faq)
+- [Contributing](#-contributing)
+- [Support](#-support)
+- [License](#-license)
+- [About Tiation](#-about-tiation)
 
 ---
 
 ## ✨ Features
 
-<table>
-  <tr>
-    <td width="50%">
-      <h3>🎯 Core Functionality</h3>
-      <img src="assets/feature-core.png" alt="Core Features" width="100%">
-      <p>Enterprise-grade core features with optimized performance</p>
-    </td>
-    <td width="50%">
-      <h3>🎨 Dark Neon Theme</h3>
-      <img src="assets/feature-theme.png" alt="Dark Neon Theme" width="100%">
-      <p>Professional dark theme with cyan/magenta gradient accents</p>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%">
-      <h3>🔒 Enterprise Security</h3>
-      <img src="assets/feature-security.png" alt="Security Features" width="100%">
-      <p>Built-in security features and compliance standards</p>
-    </td>
-    <td width="50%">
-      <h3>📱 Responsive Design</h3>
-      <img src="assets/feature-responsive.png" alt="Responsive Design" width="100%">
-      <p>Optimized for all devices and screen sizes</p>
-    </td>
-  </tr>
-</table>
+{{FEATURES_LIST}}
 
 ---
 
-## 🎨 Live Demo
-
-<div align="center">
-  <a href="https://tiaastor.github.io/tiation-rigger-workspace-docs" target="_blank">
-    <img src="assets/demo-preview.png" alt="Live Demo Preview" width="80%">
-  </a>
-  <br>
-  <a href="https://tiaastor.github.io/tiation-rigger-workspace-docs" target="_blank">
-    <img src="https://img.shields.io/badge/🔗%20View%20Live%20Demo-00D9FF?style=for-the-badge&logo=github&logoColor=white" alt="View Live Demo">
-  </a>
-</div>
-
----
-
-## 🏗️ Architecture
-
-<div align="center">
-  <img src="assets/architecture-diagram.png" alt="System Architecture" width="90%">
-</div>
-
-### System Components
-
-- **Frontend**: Modern framework with dark neon theme
-- **Backend**: Enterprise-grade API with authentication
-- **Database**: Scalable data storage solution
-- **Security**: Enterprise compliance and security features
-
----
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-```bash
-# Verify prerequisites
-node --version  # >= 18.0.0
-npm --version   # >= 8.0.0
-git --version   # >= 2.0.0
-```
-
-### Installation
+## 🏃‍♂️ Quick Start
 
 ```bash
 # Clone the repository
-git clone https://github.com/tiaastor/tiation-rigger-workspace-docs.git
+git clone https://github.com/tiation/tiation-rigger-workspace-docs.git
 cd tiation-rigger-workspace-docs
 
 # Install dependencies
-npm install
+{{INSTALL_COMMANDS}}
 
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
+# Run the application
+{{RUN_COMMANDS}}
 ```
 
-### Development Workflow
+---
 
-<div align="center">
-  <img src="assets/development-workflow.png" alt="Development Workflow" width="70%">
-</div>
+## 📦 Installation
+
+### Prerequisites
+
+{{PREREQUISITES}}
+
+### Installation Steps
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/tiation/tiation-rigger-workspace-docs.git
+   cd tiation-rigger-workspace-docs
+   ```
+
+2. **Install dependencies**
+   ```bash
+   {{DETAILED_INSTALL_COMMANDS}}
+   ```
+
+3. **Configuration**
+   ```bash
+   {{CONFIG_COMMANDS}}
+   ```
 
 ---
 
-## 📱 Screenshots
+## 🎯 Usage
 
-### Desktop Interface
+### Basic Usage
 
-<div align="center">
-  <img src="assets/desktop-interface.png" alt="Desktop Interface" width="100%">
-</div>
+{{BASIC_USAGE}}
 
-### Mobile Interface
+### Advanced Usage
 
-<div align="center">
-  <img src="assets/mobile-interface.png" alt="Mobile Interface" width="60%">
-</div>
+{{ADVANCED_USAGE}}
 
-### Dark Neon Theme
+### Examples
 
-<div align="center">
-  <img src="assets/dark-neon-theme.png" alt="Dark Neon Theme" width="100%">
-</div>
-
----
-
-## 🛠️ Technology Stack
-
-<div align="center">
-  <img src="assets/tech-stack.png" alt="Technology Stack" width="80%">
-</div>
-
-- **Frontend**: Modern JavaScript frameworks
-- **Backend**: Node.js, Python
-- **Database**: PostgreSQL, MongoDB
-
----
-
-## 📊 Performance Metrics
-
-<div align="center">
-  <img src="assets/performance-metrics.png" alt="Performance Metrics" width="90%">
-</div>
-
-- **Load Time**: < 2 seconds
-- **Bundle Size**: Optimized
-- **Lighthouse Score**: 95+
-- **Test Coverage**: 90%+
-
----
-
-## 🔧 Configuration
-
-### Environment Variables
-
-```env
-# Copy to .env.local
-NODE_ENV=development
-# Add project-specific variables
-```
-
-### Configuration Setup
-
-<div align="center">
-  <img src="assets/configuration-setup.png" alt="Configuration Setup" width="70%">
-</div>
+{{USAGE_EXAMPLES}}
 
 ---
 
 ## 📚 Documentation
 
+- **[User Guide](docs/user-guide.md)** - Complete user documentation
+- **[API Reference](docs/api-reference.md)** - Technical API documentation
+- **[Architecture](docs/architecture.md)** - System architecture overview
+- **[Deployment Guide](docs/deployment.md)** - Production deployment instructions
+- **[Developer Guide](docs/developer-guide.md)** - Development setup and guidelines
+
+### Live Documentation
+
+Visit our [GitHub Pages site](https://tiation.github.io/tiation-rigger-workspace-docs) for interactive documentation.
+
+---
+
+## 📸 Screenshots
+
 <div align="center">
-  <a href="https://github.com/tiaastor/tiation-rigger-workspace-docs/wiki" target="_blank">
-    <img src="assets/documentation-preview.png" alt="Documentation Preview" width="80%">
-  </a>
-  <br>
-  <a href="https://github.com/tiaastor/tiation-rigger-workspace-docs/wiki" target="_blank">
-    <img src="https://img.shields.io/badge/📖%20Full%20Documentation-00FF88?style=for-the-badge&logo=gitbook&logoColor=white" alt="Full Documentation">
-  </a>
+  <img src="assets/screenshots/main-interface.png" alt="Main Interface" width="800">
+  <p><em>Main application interface</em></p>
 </div>
 
-### Quick Links
+<div align="center">
+  <img src="assets/screenshots/dashboard.png" alt="Dashboard" width="800">
+  <p><em>Analytics dashboard</em></p>
+</div>
 
-- [📘 User Guide](docs/user-guide.md)
-- [🔧 API Reference](docs/api-reference.md)
-- [🏗️ Architecture Guide](docs/architecture.md)
-- [🚀 Deployment Guide](docs/deployment.md)
+---
+
+## ❓ FAQ
+
+### General Questions
+
+**Q: What makes this solution enterprise-grade?**
+A: Our solution includes comprehensive security, scalability, monitoring, and enterprise integration features with professional support.
+
+**Q: Is this compatible with existing systems?**
+A: Yes, we provide extensive API and integration capabilities for seamless system integration.
+
+**Q: What support options are available?**
+A: We offer community support through GitHub Issues and professional enterprise support for commercial users.
+
+### Technical Questions
+
+**Q: What are the system requirements?**
+A: {{SYSTEM_REQUIREMENTS}}
+
+**Q: How do I handle large scale deployments?**
+A: See our [Deployment Guide](docs/deployment.md) for enterprise-scale deployment strategies.
+
+**Q: Are there any security considerations?**
+A: Yes, please review our [Security Guide](docs/security.md) for comprehensive security best practices.
+
+### Troubleshooting
+
+**Q: Common installation issues**
+A: Check our [Troubleshooting Guide](docs/troubleshooting.md) for solutions to common problems.
+
+**Q: Performance optimization**
+A: Refer to our [Performance Guide](docs/performance.md) for optimization strategies.
 
 ---
 
@@ -211,129 +192,52 @@ NODE_ENV=development
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
 
-<div align="center">
-  <img src="assets/contribution-workflow.png" alt="Contribution Workflow" width="70%">
-</div>
-
 ### Development Setup
 
-```bash
-# Fork the repository
-git clone https://github.com/your-username/tiation-rigger-workspace-docs.git
-cd tiation-rigger-workspace-docs
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests
+5. Submit a pull request
 
-# Create feature branch
-git checkout -b feature/amazing-feature
+### Code of Conduct
 
-# Make changes and commit
-git commit -m "feat: add amazing feature"
-
-# Push to branch
-git push origin feature/amazing-feature
-```
+Please read our [Code of Conduct](CODE_OF_CONDUCT.md) before contributing.
 
 ---
 
-## 🧪 Testing
+## 🆘 Support
 
-<div align="center">
-  <img src="assets/testing-dashboard.png" alt="Testing Dashboard" width="80%">
-</div>
+### Community Support
 
-```bash
-# Run all tests
-npm test
+- **GitHub Issues**: [Report bugs or request features](https://github.com/tiation/tiation-rigger-workspace-docs/issues)
+- **Discussions**: [Join community discussions](https://github.com/tiation/tiation-rigger-workspace-docs/discussions)
+- **Documentation**: [Browse our documentation](https://tiation.github.io/tiation-rigger-workspace-docs)
 
-# Run tests with coverage
-npm run test:coverage
+### Enterprise Support
 
-# Run end-to-end tests
-npm run test:e2e
-```
+For enterprise customers, we offer:
+- Priority support
+- Custom development
+- Training and consultation
+- SLA guarantees
 
----
-
-## 🚀 Deployment
-
-<div align="center">
-  <img src="assets/deployment-pipeline.png" alt="Deployment Pipeline" width="90%">
-</div>
-
-### Production Deployment
-
-```bash
-# Build for production
-npm run build
-
-# Deploy to GitHub Pages
-npm run deploy
-```
+Contact us at [tiatheone@protonmail.com](mailto:tiatheone@protonmail.com)
 
 ---
 
-## 📈 Roadmap
-
-<div align="center">
-  <img src="assets/roadmap.png" alt="Project Roadmap" width="90%">
-</div>
-
-- [x] Core functionality
-- [x] Dark neon theme implementation
-- [x] Enterprise-grade documentation
-- [ ] Advanced features
-- [ ] Mobile optimization
-- [ ] Third-party integrations
-
 ---
 
-## 📞 Support & Contact
+## 🔮 Tiation Ecosystem
 
-<div align="center">
-  <img src="assets/support-channels.png" alt="Support Channels" width="70%">
-</div>
+This repository is part of the Tiation ecosystem. Explore related projects:
 
-- 📧 **Enterprise Support**: [tiatheone@protonmail.com](mailto:tiatheone@protonmail.com)
-- 🐛 **Issues**: [GitHub Issues](https://github.com/tiaastor/tiation-rigger-workspace-docs/issues)
-- 📖 **Documentation**: [Wiki](https://github.com/tiaastor/tiation-rigger-workspace-docs/wiki)
-- 🔗 **GitHub**: [Repository](https://github.com/tiaastor/tiation-rigger-workspace-docs)
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+- [🌟 TiaAstor](https://github.com/TiaAstor/TiaAstor) - Personal brand and story
+- [🐰 ChaseWhiteRabbit NGO](https://github.com/tiation/tiation-chase-white-rabbit-ngo) - Social impact initiatives
+- [🏗️ Infrastructure](https://github.com/tiation/tiation-rigger-infrastructure) - Enterprise infrastructure
+- [🤖 AI Agents](https://github.com/tiation/tiation-ai-agents) - Intelligent automation
+- [📝 CMS](https://github.com/tiation/tiation-cms) - Content management system
+- [⚡ Terminal Workflows](https://github.com/tiation/tiation-terminal-workflows) - Developer tools
 
 ---
-
-## 🌟 Acknowledgments
-
-<div align="center">
-  <img src="assets/acknowledgments.png" alt="Acknowledgments" width="60%">
-</div>
-
-- Enterprise-grade development standards
-- Open-source community contributions
-- Dark neon theme inspiration
-
----
-
-## 🔗 Related Projects
-
-- [Tiation Terminal Workflows](https://github.com/tiaastor/tiation-terminal-workflows)
-- [Tiation Docker Debian](https://github.com/tiaastor/tiation-docker-debian)
-- [Tiation AI Platform](https://github.com/tiaastor/tiation-ai-platform)
-- [Tiation CMS](https://github.com/tiaastor/tiation-cms)
-
----
-
-<div align="center">
-  <img src="assets/footer-banner.png" alt="Tiation Enterprise Solutions" width="100%">
-  
-  **⭐ Star this repository if you find it helpful! ⭐**
-  
-  <a href="https://github.com/tiaastor/tiation-rigger-workspace-docs">
-    <img src="https://img.shields.io/github/stars/tiaastor/tiation-rigger-workspace-docs?style=social&label=Star&maxAge=2592000" alt="GitHub Stars">
-  </a>
-
-  <p><strong>Built with ❤️ and enterprise-grade standards by <a href="https://github.com/tiaastor">Tiation</a></strong></p>
-</div>
+*Built with 💜 by the Tiation team*

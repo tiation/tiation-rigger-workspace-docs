@@ -1,62 +1,31 @@
-# GitHub Pages Configuration for tiation-rigger-workspace-docs
-
+# GitHub Pages Configuration
 title: "tiation-rigger-workspace-docs"
-description: "Enterprise-grade solutions with comprehensive documentation"
+description: "Enterprise-grade solution in the Tiation ecosystem"
 url: "https://tiation.github.io/tiation-rigger-workspace-docs"
-baseurl: "/tiation-rigger-workspace-docs"
+baseurl: ""
 
 # Theme
 theme: minima
+markdown: kramdown
+highlighter: rouge
+
+# Plugins
 plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
 
-# SEO
-author: "Tiation"
-twitter:
-  username: tiation
-  card: summary_large_image
-
-# Build settings
-markdown: kramdown
-highlighter: rouge
-permalink: pretty
-
-# Exclude from processing
-exclude:
-  - node_modules/
-  - .cache/
-  - .parcel-cache/
-  - .DS_Store
-  - Thumbs.db
-
-# Include
-include:
-  - _pages
-  - promotional
-
-# Collections
-collections:
-  docs:
-    output: true
-    permalink: /:collection/:name/
-
-# Default settings
-defaults:
-  - scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "post"
-      author: "Tiation"
-  - scope:
-      path: ""
-      type: "pages"
-    values:
-      layout: "page"
-  - scope:
-      path: ""
-      type: "docs"
-    values:
-      layout: "doc"
+# Dark neon theme
+custom_css: |
+  :root {
+    --primary-color: #00ffff;
+    --secondary-color: #ff00ff;
+    --background-color: #0a0a0a;
+    --text-color: #ffffff;
+    --accent-color: #00ff88;
+  }
+  
+  body {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    color: var(--text-color);
+  }
