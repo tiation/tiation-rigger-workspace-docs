@@ -126,7 +126,7 @@ services:
     image: prom/prometheus:latest
     container_name: tiation-rigger-prometheus
     ports:
-      - "9090:9090"
+      - "9092:9090"
     volumes:
       - ./docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
       - prometheus_data:/prometheus

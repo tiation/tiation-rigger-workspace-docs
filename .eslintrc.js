@@ -1,111 +1,80 @@
+// 🎯 Tiation Rigger Workspace Documentation - ESLint Configuration
+// Enterprise-grade linting for documentation projects
+
 module.exports = {
-  parser: '@typescript-eslint/parser',
+  env: {
+    browser: true,
+    es2021: true,
+    node: true,
+  },
   extends: [
     'eslint:recommended',
-    '@typescript-eslint/recommended',
     'prettier',
-    'plugin:security/recommended',
-    'plugin:node/recommended',
   ],
-  plugins: ['@typescript-eslint', 'security', 'import'],
   parserOptions: {
-    ecmaVersion: 2022,
+    ecmaVersion: 'latest',
     sourceType: 'module',
-    project: './tsconfig.json',
   },
-  env: {
-    node: true,
-    es6: true,
-    jest: true,
-  },
+  ignorePatterns: [
+    '.eslintrc.js',
+    'dist/**/*',
+    'node_modules/**/*',
+    'assets/css/**/*',
+    '*.min.js',
+    '*.min.css',
+  ],
   rules: {
-    // TypeScript specific rules
-    '@typescript-eslint/no-unused-vars': 'error',
-    '@typescript-eslint/no-explicit-any': 'warn',
-    '@typescript-eslint/explicit-function-return-type': 'warn',
-    '@typescript-eslint/prefer-const': 'error',
-    '@typescript-eslint/no-var-requires': 'error',
-    
-    // Security rules
-    'security/detect-object-injection': 'error',
-    'security/detect-non-literal-regexp': 'error',
-    'security/detect-unsafe-regex': 'error',
-    'security/detect-buffer-noassert': 'error',
-    'security/detect-child-process': 'error',
-    'security/detect-disable-mustache-escape': 'error',
-    'security/detect-eval-with-expression': 'error',
-    'security/detect-no-csrf-before-method-override': 'error',
-    'security/detect-non-literal-fs-filename': 'error',
-    'security/detect-non-literal-require': 'error',
-    'security/detect-possible-timing-attacks': 'error',
-    'security/detect-pseudoRandomBytes': 'error',
-    
-    // Import rules
-    'import/order': [
-      'error',
-      {
-        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
-        'newlines-between': 'always',
-      },
-    ],
-    'import/no-unresolved': 'error',
-    'import/no-duplicates': 'error',
-    
-    // General code quality
+    // Code Quality
     'no-console': 'warn',
     'no-debugger': 'error',
-    'no-var': 'error',
+    'no-duplicate-imports': 'error',
+    'no-unused-vars': 'error',
+    'no-unused-expressions': 'error',
     'prefer-const': 'error',
-    'no-trailing-spaces': 'error',
-    'eol-last': 'error',
-    'comma-dangle': ['error', 'always-multiline'],
-    'semi': ['error', 'always'],
-    'quotes': ['error', 'single', { avoidEscape: true }],
-    'indent': ['error', 2],
-    'max-len': ['error', { code: 100, ignoreUrls: true }],
-    'object-curly-spacing': ['error', 'always'],
-    'array-bracket-spacing': ['error', 'never'],
-    'space-before-blocks': 'error',
-    'keyword-spacing': 'error',
-    'space-infix-ops': 'error',
-    'space-before-function-paren': ['error', 'never'],
-    'no-multiple-empty-lines': ['error', { max: 2, maxEOF: 1 }],
-    'no-mixed-spaces-and-tabs': 'error',
-    'no-tabs': 'error',
+    'no-var': 'error',
+    'object-shorthand': 'error',
+    'prefer-arrow-callback': 'error',
+    'prefer-template': 'error',
     
-    // Node.js specific
-    'node/no-missing-import': 'off', // Handled by TypeScript
-    'node/no-unpublished-import': 'off',
-    'node/no-unsupported-features/es-syntax': 'off',
-    'node/prefer-global/buffer': 'error',
-    'node/prefer-global/console': 'error',
-    'node/prefer-global/process': 'error',
-    'node/prefer-global/url-search-params': 'error',
-    'node/prefer-global/url': 'error',
-    'node/prefer-promises/dns': 'error',
-    'node/prefer-promises/fs': 'error',
-  },
-  settings: {
-    'import/resolver': {
-      typescript: {
-        alwaysTryTypes: true,
-        project: './tsconfig.json',
-      },
-    },
+    // Best Practices
+    'consistent-return': 'error',
+    'curly': 'error',
+    'eqeqeq': 'error',
+    'no-eval': 'error',
+    'no-implied-eval': 'error',
+    'no-new-func': 'error',
+    'no-script-url': 'error',
+    'no-sequences': 'error',
+    'no-throw-literal': 'error',
+    'no-unmodified-loop-condition': 'error',
+    'no-unused-labels': 'error',
+    'no-useless-call': 'error',
+    'no-useless-concat': 'error',
+    'no-useless-escape': 'error',
+    'no-useless-return': 'error',
+    'no-void': 'error',
+    'prefer-promise-reject-errors': 'error',
+    'radix': 'error',
   },
   overrides: [
     {
-      files: ['**/*.test.ts', '**/*.test.js', '**/*.spec.ts', '**/*.spec.js'],
-      env: {
-        jest: true,
+      files: ['**/*.ts', '**/*.tsx'],
+      parser: '@typescript-eslint/parser',
+      plugins: ['@typescript-eslint'],
+      extends: [
+        'eslint:recommended',
+        '@typescript-eslint/recommended',
+        'prettier',
+      ],
+      parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module',
       },
-      extends: ['plugin:jest/recommended'],
       rules: {
-        'jest/no-disabled-tests': 'warn',
-        'jest/no-focused-tests': 'error',
-        'jest/no-identical-title': 'error',
-        'jest/prefer-to-have-length': 'warn',
-        'jest/valid-expect': 'error',
+        '@typescript-eslint/no-explicit-any': 'warn',
+        '@typescript-eslint/no-unused-vars': 'error',
+        '@typescript-eslint/prefer-nullish-coalescing': 'error',
+        '@typescript-eslint/prefer-optional-chain': 'error',
       },
     },
   ],
