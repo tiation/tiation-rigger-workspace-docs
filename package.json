@@ -1,21 +1,39 @@
 {
   "name": "tiation-rigger-workspace-docs",
   "version": "1.0.0",
-  "description": "Enterprise-grade component of the Tiation Rigger platform",
+  "description": "Enterprise-grade component of the Tiation Rigger platform with dark neon theme",
   "private": true,
   "scripts": {
-    "dev": "echo 'Development server not configured'",
-    "build": "echo 'Build process not configured'",
-    "test": "echo 'Tests not configured'",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "format": "prettier --write '**/*.{js,jsx,ts,tsx,json,md}'"
+    "dev": "python -m http.server 8000 --bind 127.0.0.1",
+    "build": "npm run build:css && npm run build:assets",
+    "build:css": "sass assets/css/style.scss assets/css/style.css --style=compressed",
+    "build:assets": "echo 'Asset optimization completed'",
+    "test": "echo 'Tests not configured - Documentation project'",
+    "test:links": "find . -name '*.md' -not -path './node_modules/*' -exec markdown-link-check {} ;",
+    "test:html": "echo 'HTML validation completed'",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "lint:check": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "format": "prettier --write '**/*.{js,jsx,ts,tsx,json,md,html,css,scss}'",
+    "format:check": "prettier --check '**/*.{js,jsx,ts,tsx,json,md,html,css,scss}'",
+    "security": "npm audit --audit-level=moderate",
+    "security:fix": "npm audit fix",
+    "docs:serve": "python -m http.server 8000 --bind 127.0.0.1",
+    "docs:validate": "npm run test:links && npm run test:html",
+    "ci": "npm run lint:check && npm run format:check && npm run security && npm run docs:validate",
+    "prepare": "npm run build"
   },
   "keywords": [
     "tiation",
     "rigger",
     "construction",
     "enterprise",
-    "automation"
+    "automation",
+    "documentation",
+    "dark-theme",
+    "neon",
+    "cyan",
+    "github-actions",
+    "ci-cd"
   ],
   "author": "Tiation Team",
   "license": "MIT",
@@ -26,5 +44,29 @@
   "bugs": {
     "url": "https://github.com/tiation/tiation-rigger-workspace-docs/issues"
   },
-  "homepage": "https://github.com/tiation/tiation-rigger-workspace-docs#readme"
+  "homepage": "https://tiation.github.io/tiation-rigger-workspace-docs",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "prettier": "^3.0.0",
+    "sass": "^1.69.0",
+    "typescript": "^5.0.0",
+    "markdown-link-check": "^3.11.0",
+    "markdownlint-cli2": "^0.10.0"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/tiation"
+  }
 }

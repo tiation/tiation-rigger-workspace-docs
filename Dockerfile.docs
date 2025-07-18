@@ -1,0 +1,42 @@
+# Dockerfile for Tiation Rigger Documentation Server
+# Enterprise-grade documentation serving with dark neon theme
+FROM nginx:alpine
+
+# Install additional packages for enterprise features
+RUN apk add --no-cache \
+    curl \
+    jq \
+    bash \
+    tzdata
+
+# Set timezone
+ENV TZ=UTC
+
+# Create app directory
+WORKDIR /usr/share/nginx/html
+
+# Copy custom nginx configuration
+COPY docker/nginx/nginx.conf /etc/nginx/nginx.conf
+
+# Copy documentation files
+COPY . /usr/share/nginx/html/
+
+# Set proper permissions
+RUN chown -R nginx:nginx /usr/share/nginx/html && \
+    chmod -R 755 /usr/share/nginx/html
+
+# Add health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost/ || exit 1
+
+# Expose port
+EXPOSE 80
+
+# Add labels for enterprise deployment
+LABEL maintainer="tiation-team@tiation.com" \
+      version="1.0.0" \
+      description="Tiation Rigger Documentation Server with Dark Neon Theme" \
+      org.opencontainers.image.source="https://github.com/tiation/tiation-rigger-workspace-docs"
+
+# Start nginx
+CMD ["nginx", "-g", "daemon off;"]

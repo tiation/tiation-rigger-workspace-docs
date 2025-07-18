@@ -45,8 +45,35 @@ The RiggerConnect platform consists of the following repositories:
 - Node.js (v18 or higher)
 - Git
 - Modern web browser
+- Docker & Docker Compose (for unified development environment)
 
-### Local Development
+### Option 1: Docker Development Environment (Recommended)
+
+**🐋 Enterprise-grade unified development environment with dark neon theme**
+
+```bash
+# One-command setup
+./scripts/setup-dev-env.sh
+
+# Access services:
+# 📖 Documentation: http://localhost:3000
+# 🔗 API Server: http://localhost:8080
+# 📊 Monitoring: http://localhost:9090
+# 📈 Analytics: http://localhost:3001
+```
+
+**Features:**
+- 🎨 Dark neon theme across all services
+- 🔄 Hot reloading and file watching
+- 📊 Comprehensive monitoring with Prometheus & Grafana
+- 🗄️ PostgreSQL database with sample data
+- 💾 Redis cache and session management
+- 🔐 Enterprise-grade security and rate limiting
+- 🛠️ Complete development toolchain
+
+👉 **[Full Docker Environment Guide](DOCKER_ENVIRONMENT.md)**
+
+### Option 2: Local Development
 1. Clone this repository:
    ```bash
    git clone https://github.com/tiation/tiation-rigger-workspace-docs.git

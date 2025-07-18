@@ -1,0 +1,58 @@
+# 🛡️ Tiation Rigger Workspace Documentation - CodeQL Configuration
+# Enterprise-grade security scanning configuration
+# Includes: Custom queries, vulnerability detection, and compliance checks
+
+name: "Tiation Rigger Workspace CodeQL Config"
+
+# Disable the default queries to use only custom ones
+disable-default-queries: false
+
+# Include additional query suites
+queries:
+  - name: security-extended
+    uses: security-extended
+  - name: security-and-quality
+    uses: security-and-quality
+
+# Custom paths to include/exclude
+paths:
+  - "**/*.js"
+  - "**/*.ts"
+  - "**/*.jsx"
+  - "**/*.tsx"
+  - "**/*.json"
+  - "**/*.html"
+  - "**/*.css"
+  - "**/*.scss"
+
+paths-ignore:
+  - "node_modules/**"
+  - "dist/**"
+  - "build/**"
+  - "coverage/**"
+  - ".github/**"
+  - "*.min.js"
+  - "*.min.css"
+
+# Query filters
+query-filters:
+  # Include high and medium severity findings
+  - include:
+      severity: 
+        - "high"
+        - "medium"
+  
+  # Include enterprise security patterns
+  - include:
+      tags:
+        - "security"
+        - "external/cwe"
+        - "external/owasp"
+
+# Database configuration
+database:
+  # Optimize for documentation projects
+  finalize-database: true
+  
+  # Include source location information
+  include-source-location: true

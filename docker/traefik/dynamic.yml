@@ -1,0 +1,181 @@
+# Traefik dynamic configuration for Tiation Rigger
+# Defines routing rules and middleware for the development environment
+
+# HTTP routers
+http:
+  routers:
+    # Documentation site
+    docs-router:
+      rule: "Host(`docs.tiation.local`) || Host(`localhost`)"
+      service: docs-service
+      entryPoints:
+        - web
+      middlewares:
+        - default-headers
+        - gzip-compression
+
+    # API service
+    api-router:
+      rule: "Host(`api.tiation.local`) || PathPrefix(`/api`)"
+      service: api-service
+      entryPoints:
+        - web
+      middlewares:
+        - default-headers
+        - cors-headers
+        - rate-limit
+
+    # Traefik dashboard
+    dashboard-router:
+      rule: "Host(`traefik.tiation.local`) || PathPrefix(`/dashboard`)"
+      service: api@internal
+      entryPoints:
+        - web
+      middlewares:
+        - dashboard-auth
+
+    # Prometheus metrics
+    prometheus-router:
+      rule: "Host(`metrics.tiation.local`) || PathPrefix(`/metrics`)"
+      service: prometheus-service
+      entryPoints:
+        - web
+      middlewares:
+        - metrics-auth
+
+    # Grafana dashboard
+    grafana-router:
+      rule: "Host(`grafana.tiation.local`) || PathPrefix(`/grafana`)"
+      service: grafana-service
+      entryPoints:
+        - web
+      middlewares:
+        - default-headers
+
+  # Services
+  services:
+    docs-service:
+      loadBalancer:
+        servers:
+          - url: "http://docs-server:80"
+        healthCheck:
+          path: /health
+          interval: 30s
+          timeout: 10s
+
+    api-service:
+      loadBalancer:
+        servers:
+          - url: "http://api-server:8080"
+        healthCheck:
+          path: /health
+          interval: 30s
+          timeout: 10s
+
+    prometheus-service:
+      loadBalancer:
+        servers:
+          - url: "http://prometheus:9090"
+
+    grafana-service:
+      loadBalancer:
+        servers:
+          - url: "http://grafana:3000"
+
+  # Middleware
+  middlewares:
+    # Default security headers
+    default-headers:
+      headers:
+        frameDeny: true
+        sslRedirect: true
+        browserXssFilter: true
+        contentTypeNosniff: true
+        forceSTSHeader: true
+        stsIncludeSubdomains: true
+        stsPreload: true
+        stsSeconds: 31536000
+        customFrameOptionsValue: "SAMEORIGIN"
+        customRequestHeaders:
+          X-Forwarded-Proto: "https"
+        customResponseHeaders:
+          X-Robots-Tag: "noindex,nofollow,nosnippet,noarchive"
+
+    # CORS headers for API
+    cors-headers:
+      headers:
+        accessControlAllowMethods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - PATCH
+          - OPTIONS
+        accessControlAllowOriginList:
+          - "http://localhost:3000"
+          - "https://docs.tiation.local"
+        accessControlAllowHeaders:
+          - "Content-Type"
+          - "Authorization"
+          - "X-Requested-With"
+        accessControlExposeHeaders:
+          - "X-Total-Count"
+          - "X-Page-Count"
+        accessControlAllowCredentials: true
+        accessControlMaxAge: 86400
+
+    # Rate limiting
+    rate-limit:
+      rateLimit:
+        average: 100
+        burst: 200
+        period: 1s
+
+    # Gzip compression
+    gzip-compression:
+      compress: {}
+
+    # Basic auth for dashboard
+    dashboard-auth:
+      basicAuth:
+        users:
+          - "admin:$2y$12$8S7oUvXfGgRKGN2YBdGlAuI9fR2kRUiJCdpGwZPJzA9/gGmGtGmGy"  # admin:tiation123
+
+    # Basic auth for metrics
+    metrics-auth:
+      basicAuth:
+        users:
+          - "metrics:$2y$12$8S7oUvXfGgRKGN2YBdGlAuI9fR2kRUiJCdpGwZPJzA9/gGmGtGmGy"  # metrics:tiation123
+
+    # Redirect to HTTPS
+    https-redirect:
+      redirectScheme:
+        scheme: https
+        permanent: true
+
+    # Strip prefix for API
+    api-strip-prefix:
+      stripPrefix:
+        prefixes:
+          - "/api"
+
+# TLS configuration
+tls:
+  options:
+    default:
+      minVersion: "VersionTLS12"
+      cipherSuites:
+        - "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+        - "TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305"
+        - "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"
+        - "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256"
+      curvePreferences:
+        - "CurveP521"
+        - "CurveP384"
+      sniStrict: true
+
+# File provider certificates (for development)
+tls:
+  certificates:
+    - certFile: /etc/traefik/certs/tiation.local.crt
+      keyFile: /etc/traefik/certs/tiation.local.key

@@ -1,0 +1,191 @@
+version: '3.8'
+
+services:
+  # Documentation Site Server
+  docs-server:
+    build:
+      context: .
+      dockerfile: Dockerfile.docs
+    container_name: tiation-rigger-docs
+    ports:
+      - "3000:80"
+    volumes:
+      - ./:/usr/share/nginx/html:ro
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    environment:
+      - NODE_ENV=development
+      - DOCS_VERSION=1.0.0
+    networks:
+      - tiation-network
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.docs.rule=Host(`docs.tiation.local`)"
+      - "traefik.http.services.docs.loadbalancer.server.port=80"
+
+  # API Development Server (for future API integration)
+  api-server:
+    build:
+      context: ./api
+      dockerfile: Dockerfile.dev
+    container_name: tiation-rigger-api
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./api:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - API_PORT=8080
+      - CORS_ORIGIN=http://localhost:3000
+    networks:
+      - tiation-network
+    restart: unless-stopped
+    depends_on:
+      - postgres
+      - redis
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.api.rule=Host(`api.tiation.local`)"
+      - "traefik.http.services.api.loadbalancer.server.port=8080"
+
+  # Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: tiation-rigger-db
+    environment:
+      - POSTGRES_DB=tiation_rigger
+      - POSTGRES_USER=tiation_user
+      - POSTGRES_PASSWORD=tiation_dev_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    ports:
+      - "5432:5432"
+    networks:
+      - tiation-network
+    restart: unless-stopped
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: tiation-rigger-cache
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+      - ./docker/redis/redis.conf:/usr/local/etc/redis/redis.conf:ro
+    command: redis-server /usr/local/etc/redis/redis.conf
+    networks:
+      - tiation-network
+    restart: unless-stopped
+
+  # Development Tools Container
+  dev-tools:
+    build:
+      context: ./docker/dev-tools
+      dockerfile: Dockerfile
+    container_name: tiation-rigger-dev-tools
+    volumes:
+      - ./:/workspace
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    working_dir: /workspace
+    environment:
+      - WORKSPACE_PATH=/workspace
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    networks:
+      - tiation-network
+    stdin_open: true
+    tty: true
+    restart: "no"
+
+  # Load Balancer / Reverse Proxy
+  traefik:
+    image: traefik:v3.0
+    container_name: tiation-rigger-proxy
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8090:8080"  # Traefik dashboard
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./docker/traefik/traefik.yml:/etc/traefik/traefik.yml:ro
+      - ./docker/traefik/dynamic.yml:/etc/traefik/dynamic.yml:ro
+    networks:
+      - tiation-network
+    restart: unless-stopped
+
+  # Monitoring - Prometheus
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: tiation-rigger-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    networks:
+      - tiation-network
+    restart: unless-stopped
+
+  # Monitoring - Grafana
+  grafana:
+    image: grafana/grafana:latest
+    container_name: tiation-rigger-grafana
+    ports:
+      - "3001:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./docker/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./docker/grafana/dashboards:/var/lib/grafana/dashboards:ro
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=tiation_admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource
+    networks:
+      - tiation-network
+    restart: unless-stopped
+    depends_on:
+      - prometheus
+
+  # File Watcher for Hot Reloading
+  file-watcher:
+    build:
+      context: ./docker/file-watcher
+      dockerfile: Dockerfile
+    container_name: tiation-rigger-watcher
+    volumes:
+      - ./:/workspace
+    environment:
+      - WATCH_PATHS=/workspace
+      - IGNORE_PATTERNS=node_modules,*.git*,.DS_Store
+    networks:
+      - tiation-network
+    restart: unless-stopped
+
+networks:
+  tiation-network:
+    driver: bridge
+    name: tiation-network
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  prometheus_data:
+    driver: local
+  grafana_data:
+    driver: local
